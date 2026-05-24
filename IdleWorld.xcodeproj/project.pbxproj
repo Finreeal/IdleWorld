@@ -3,316 +3,444 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		161F1BEA3DD72A09E013577C /* IdleWorldWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E471DA2526411FEBD4383D5 /* IdleWorldWidget.swift */; };
-		1CCCFF294191693CD675D393 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD9100935F31FD663B8223 /* RootView.swift */; };
-		1EF40A72980F29E29EA9B506 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053D1FD6F4525D2BB035EC49 /* WidgetKit.framework */; };
-		2BD72D71D91D7BD86AB485D7 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBA47B42E426C6CC525609 /* Haptics.swift */; };
-		37D07C2332613FBCA779E87B /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE918010F19872BDB72D6A9 /* GameState.swift */; };
-		3996CC999792FAF7FF726D80 /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBFEF35B725F4BDB401AF46 /* CampArtwork.swift */; };
-		3F8C3E2E4A9F36FD8424923A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4D375C7D7DB52DCEBBF43F /* SwiftUI.framework */; };
-		47BA752A69F0E6284EA2D5FD /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAB4991C69E838D4B2D6D1 /* Upgrade.swift */; };
-		605BBC358D88CA2EB908E0B0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F293A5BC1C86D70880118DF0 /* HomeView.swift */; };
-		6A84804746A101E1446CE694 /* HealthBonusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5F5F256709E1075FE6D261 /* HealthBonusService.swift */; };
-		6C559E13187805E442CE6EF4 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAB4991C69E838D4B2D6D1 /* Upgrade.swift */; };
-		6D6C0DD985A6EF41BAB82D1C /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99B2F6DFBD83D86E73AB977 /* GameStore.swift */; };
-		6FD99A59FB5C3D4A5D9D9E23 /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F289447A18E07C2F3F0A8E /* WorldTheme.swift */; };
-		75BC3F6566FF665B1C92C7C4 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A93618723EACD327F01B23 /* SessionLog.swift */; };
-		7851251486BCBA0A15DB87CF /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E8BC9F499FF6F5CB1BAF6A /* ActivityKit.framework */; };
-		84238806DA07F80972761AFB /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBFEF35B725F4BDB401AF46 /* CampArtwork.swift */; };
-		84B3C9D26765FEAB1EF5729D /* IdleWorldWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFE93AE2E10F427528EA232 /* IdleWorldWidgetBundle.swift */; };
-		8B8497C8A88957B880D6D403 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E8BC9F499FF6F5CB1BAF6A /* ActivityKit.framework */; };
-		8C4E7F037DF6710E9C40F0F2 /* DeepFocusLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07BC6981CFFA7829497A710 /* DeepFocusLiveActivity.swift */; };
-		8F10F43477270649D36C0755 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99B2F6DFBD83D86E73AB977 /* GameStore.swift */; };
-		98890734B0FBBD387EEB193A /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3384472E0E1EFEC92F1B0E7 /* AppConfig.swift */; };
-		9B8ABBA4C400C8FF1D829280 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A6F51A68259CD7D5E02F04 /* Foundation.framework */; };
-		9D5CC8EB5A36A26E13DF28EC /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3384472E0E1EFEC92F1B0E7 /* AppConfig.swift */; };
-		9E4BD30A98889DFD8365FA22 /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49A20CBD3812B0BE4FFBC4F /* DeepFocusActivityAttributes.swift */; };
-		A119F5317DA70FD1643DEC52 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7672EC7D7A825A14AA4416DD /* HealthKit.framework */; };
-		A16064360D878D1E1DD073D0 /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7340492F37DFC6A01FA96A15 /* FocusSessionPlan.swift */; };
-		A5E0108128DCE82EA9F8BF40 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A6F51A68259CD7D5E02F04 /* Foundation.framework */; };
-		A6DBF4706A402D1EB1B722A7 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00679D846935ED2876A49D72 /* AppTheme.swift */; };
-		A7446A59C115A468728CB021 /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49A20CBD3812B0BE4FFBC4F /* DeepFocusActivityAttributes.swift */; };
-		AFFD070221AC4AF4D8315188 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE918010F19872BDB72D6A9 /* GameState.swift */; };
-		B143827B2D251BC757547509 /* IdleWorldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D658E7FE0F78BA70C49556F /* IdleWorldApp.swift */; };
-		B9359A1C8039561DDA78E761 /* WidgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D043A867489240D75E3EE4FA /* WidgetStore.swift */; };
-		B9CD9D0995C5BD6C7644FD7F /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBA47B42E426C6CC525609 /* Haptics.swift */; };
-		C2A3A6BA76E22E02E960CF88 /* PostcardRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF05CCB2A5FA03306FFFD416 /* PostcardRenderer.swift */; };
-		C3D9AD70BF82821BE0659630 /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD52A43D83D1E76A5A62833 /* FocusSessionManager.swift */; };
-		CF5DE92083EB72D74E412A45 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053D1FD6F4525D2BB035EC49 /* WidgetKit.framework */; };
-		D2029CEDE8D336ABA21E2377 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00679D846935ED2876A49D72 /* AppTheme.swift */; };
-		D3EDF9F49B3164113795D36E /* IdleWorldWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2EA3E5F7A8CE15777ED5A34 /* IdleWorldWidgetExtension.appex */; };
-		D456F322752D3C163716D142 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C431501C1F923E522B9A69F8 /* OnboardingView.swift */; };
-		DAE0D3ABC7F948F5CB85BA09 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A93618723EACD327F01B23 /* SessionLog.swift */; };
-		DB9ED51840714DB06C397053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D9A93F215B9AF2E9C95ADB /* Assets.xcassets */; };
-		DC51D45451BBCEC1BB495D85 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4D375C7D7DB52DCEBBF43F /* SwiftUI.framework */; };
-		E028EE3E58201C089EBA9B34 /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD52A43D83D1E76A5A62833 /* FocusSessionManager.swift */; };
-		E5BD04C0CE8E78C045867A43 /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F289447A18E07C2F3F0A8E /* WorldTheme.swift */; };
-		F1D8FBEFF93FE5F77638AD12 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4276B5EA4B284A2B1777E /* ShopView.swift */; };
-		FE558C51A3953C403796A23C /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7340492F37DFC6A01FA96A15 /* FocusSessionPlan.swift */; };
+		011E6B715A92A440DC4117AB /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4EB48BD40F9C0A54C7809A /* DeviceActivity.framework */; };
+		05890BCB24B02E48C7EFE3FB /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCF8FE871A878B634AB462 /* GameState.swift */; };
+		0D525D5312C9E83229283F09 /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0CBFF7AF508478A0429C0 /* FocusSessionPlan.swift */; };
+		0E308F82A7A006D2B012CD8E /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0CBFF7AF508478A0429C0 /* FocusSessionPlan.swift */; };
+		0FF253612BD256C88E0017D0 /* DeepFocusLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE726810235C71E4F27A50B /* DeepFocusLiveActivity.swift */; };
+		11A15DF611DB5013AD487F77 /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7CE43FB3B0FA82898BB37 /* WorldTheme.swift */; };
+		19AA88935F84EAE3A7551A0C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AE41ED31C233E0ED4367A6 /* HomeView.swift */; };
+		1B1DDA28269C6B9A3678B4B8 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F22EA431534A7405764EC /* Upgrade.swift */; };
+		2530DD18FCC6E7FCDB26096C /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A86B3E23C34C848E645A7B /* CampArtwork.swift */; };
+		256A6BE3C3612F75A32D556A /* HealthBonusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33FA67DF33BF373A411DE83 /* HealthBonusService.swift */; };
+		26827F1BCA7465AF65439A3D /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0C4A009F0E7842392C334 /* DeepFocusActivityAttributes.swift */; };
+		2B570ABA2E70119AD64E9441 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4EB48BD40F9C0A54C7809A /* DeviceActivity.framework */; };
+		2F7A7974125E1FF0B7947D29 /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D0D4C38F87972D1086956 /* FocusSessionManager.swift */; };
+		352402DAD29F0AED3D72226B /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC615CCD98B0C44995B75242 /* ShopView.swift */; };
+		3647005A9844AC6215641B6E /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F22EA431534A7405764EC /* Upgrade.swift */; };
+		3AC460FF171A8EAF4C32458B /* PostcardRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC10006B215DF71206744374 /* PostcardRenderer.swift */; };
+		407316548794F240952B8DD3 /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7CE43FB3B0FA82898BB37 /* WorldTheme.swift */; };
+		4476C254C84719BF533CB21F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 37233FBA8C3EE2779D17634C /* Lottie */; };
+		48641CA51A26CFB6BFA9F22C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8692DE91348339153002D7 /* OnboardingView.swift */; };
+		4870E5A323231D04CB079B38 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53837B085664848FA5E97A4 /* SessionLog.swift */; };
+		4A3F3760761D0420D6CEAA89 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53837B085664848FA5E97A4 /* SessionLog.swift */; };
+		4AE3268BA5C81496966D259E /* campfire.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A3097D26E37452A46BEC721 /* campfire.json */; };
+		4D104D2F7FD1DF77D4205DD9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46757BD108A8B25237568A24 /* WidgetKit.framework */; };
+		55771ED0C5AF98CE5CBFB71C /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC39633952EE4148EE4C610 /* ActivityKit.framework */; };
+		598B62F47A548AA0393BE4A2 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23AFA78FD9F7E2CE5206AF /* GameStore.swift */; };
+		59BF08F95252DB5A703F6FEA /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A41912A7788D0E8B329E /* Haptics.swift */; };
+		610E5503827CBFE38B03CBBF /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCE6F2CFE896B154008CC43 /* AppTheme.swift */; };
+		682F02125724004F407C97A8 /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D0D4C38F87972D1086956 /* FocusSessionManager.swift */; };
+		6B6D238006F4D0943FA5ACCF /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9E528A3C96FD5E8D6BCC8F /* AppConfig.swift */; };
+		7069D97C4DE8140CCBE6A2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D05C2CF427ECAE53C31A63ED /* Assets.xcassets */; };
+		7115BD375687A353963271AA /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C15B1D4A27B527C46A068 /* SwiftUI.framework */; };
+		7569D127039328D695C80A14 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB64E7D08A08039BD42E38A /* RootView.swift */; };
+		75B7BFE631D800C1E567A760 /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C7CE43FB3B0FA82898BB37 /* WorldTheme.swift */; };
+		854CB9CFC1CBD7FB061DEBED /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5D0D4C38F87972D1086956 /* FocusSessionManager.swift */; };
+		90AF151ED593E2CA6E2FBE18 /* ManagedSettings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BA215A311C4F608E59A16C /* ManagedSettings.framework */; };
+		91C437A5DAFA4B7C4294677C /* IdleWorldWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62D278FBFB9A242A4DA8352 /* IdleWorldWidget.swift */; };
+		94C5FB99CFABD571CA6C8360 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267E74752504563BA5E0EDB /* LottieView.swift */; };
+		9C1369A64A47E87AA39D7FDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC67DDEF4BBE243E33D1FE8 /* Foundation.framework */; };
+		9CB008611E42C03D9D5C03D4 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A41912A7788D0E8B329E /* Haptics.swift */; };
+		A04A39397E594D0D0822D0BB /* IdleWorldWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239FAB35373D8B1D14551CEC /* IdleWorldWidgetBundle.swift */; };
+		A1973CEA95A79B63F6368956 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5F22EA431534A7405764EC /* Upgrade.swift */; };
+		AA5BB864A8971C9074599AFD /* sun.json in Resources */ = {isa = PBXBuildFile; fileRef = 239438BDFC7416E78F43F697 /* sun.json */; };
+		ABAB187C96332ED521CF8688 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC67DDEF4BBE243E33D1FE8 /* Foundation.framework */; };
+		ACB3E93177AB67F2B4D9B1F8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0C15B1D4A27B527C46A068 /* SwiftUI.framework */; };
+		B42A06FEAF5BB430B3EE5F52 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46757BD108A8B25237568A24 /* WidgetKit.framework */; };
+		B82177B4097962298799768A /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9E528A3C96FD5E8D6BCC8F /* AppConfig.swift */; };
+		B82C6B01652B2F63F090B04B /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE55A41912A7788D0E8B329E /* Haptics.swift */; };
+		B82FF9C124117D8E36A070D8 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23AFA78FD9F7E2CE5206AF /* GameStore.swift */; };
+		B96DAB995D5A456A02020FB6 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9E528A3C96FD5E8D6BCC8F /* AppConfig.swift */; };
+		BD7DB84838E3A6396B7DB81E /* IdleWorldWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 30BFA53C634A615B9D6B09F5 /* IdleWorldWidgetExtension.appex */; };
+		C2507D4AD0992FCC7E118CF9 /* FamilyControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC15175EF305F03503A5BA2 /* FamilyControls.framework */; };
+		C4F3713512D47DADBC3B5155 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC67DDEF4BBE243E33D1FE8 /* Foundation.framework */; };
+		C5B1B97961119F28986A16DC /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A23AFA78FD9F7E2CE5206AF /* GameStore.swift */; };
+		CC46D794DE637626DFE930BC /* WidgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82881AAAA9E6B9B23CCBCF9 /* WidgetStore.swift */; };
+		CC640830BDC842893FBC1658 /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0C4A009F0E7842392C334 /* DeepFocusActivityAttributes.swift */; };
+		D3E5F5BE122951DD182FA28D /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCE6F2CFE896B154008CC43 /* AppTheme.swift */; };
+		D5E9591148DE41B9DE220D21 /* ScreenTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C9222902E8A94AB09F27C1 /* ScreenTimeService.swift */; };
+		D6036A3ABF6E6D8A2A12030D /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53837B085664848FA5E97A4 /* SessionLog.swift */; };
+		E0447E0F14D506FC5D6DEFAB /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC39633952EE4148EE4C610 /* ActivityKit.framework */; };
+		E12FAB7782065C430805E10D /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C0C4A009F0E7842392C334 /* DeepFocusActivityAttributes.swift */; };
+		E13365526A3BF9F1F42EDFFA /* CampLottiePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD0D942E4F46B2760A20D8 /* CampLottiePanel.swift */; };
+		E71405BC2B3B29D32F01C05C /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A0CBFF7AF508478A0429C0 /* FocusSessionPlan.swift */; };
+		E9F453BAA3330A2F32931523 /* FamilyControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC15175EF305F03503A5BA2 /* FamilyControls.framework */; };
+		EAB8590D96C922C0CB6068D6 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCF8FE871A878B634AB462 /* GameState.swift */; };
+		EAE3E59CE658B2F97201A4F7 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCF8FE871A878B634AB462 /* GameState.swift */; };
+		ECF4805107808C6E44633B5F /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A86B3E23C34C848E645A7B /* CampArtwork.swift */; };
+		F257409AA8FD37F43AB32BDF /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCE6F2CFE896B154008CC43 /* AppTheme.swift */; };
+		F3628298327237C15E0BC554 /* ScreenTimeMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585B2CE93F59E5875F31910 /* ScreenTimeMonitorExtension.swift */; };
+		F6A083312B765BB5B5149C4B /* IdleWorldScreenTimeMonitorExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2116F4768A9C58AA0D2ECA1C /* IdleWorldScreenTimeMonitorExtension.appex */; };
+		F7914CD8C502C2FB1B64A3C0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8B09AE79CDA19417544D47 /* HealthKit.framework */; };
+		F80755821E7E93E2E9550D70 /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A86B3E23C34C848E645A7B /* CampArtwork.swift */; };
+		F830A66B6C8B8ED5C7BA8C29 /* IdleWorldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFC7677F743E8C11D6F4CAE /* IdleWorldApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		586D1194851A3D1B7BAE44C6 /* Embed Foundation Extensions */ = {
+		21796945B909BCCCB7336B98 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D3EDF9F49B3164113795D36E /* IdleWorldWidgetExtension.appex in Embed Foundation Extensions */,
+				BD7DB84838E3A6396B7DB81E /* IdleWorldWidgetExtension.appex in Embed App Extensions */,
+				F6A083312B765BB5B5149C4B /* IdleWorldScreenTimeMonitorExtension.appex in Embed App Extensions */,
 			);
-			name = "Embed Foundation Extensions";
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00679D846935ED2876A49D72 /* AppTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
-		03D9A93F215B9AF2E9C95ADB /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		053D1FD6F4525D2BB035EC49 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = "<group>"; };
-		22E8BC9F499FF6F5CB1BAF6A /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = "<group>"; };
-		31A93618723EACD327F01B23 /* SessionLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionLog.swift; sourceTree = "<group>"; };
-		3D658E7FE0F78BA70C49556F /* IdleWorldApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldApp.swift; sourceTree = "<group>"; };
-		46F289447A18E07C2F3F0A8E /* WorldTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorldTheme.swift; sourceTree = "<group>"; };
-		4A5F5F256709E1075FE6D261 /* HealthBonusService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthBonusService.swift; sourceTree = "<group>"; };
-		5A4D375C7D7DB52DCEBBF43F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = "<group>"; };
-		5EBFEF35B725F4BDB401AF46 /* CampArtwork.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CampArtwork.swift; sourceTree = "<group>"; };
-		6EE918010F19872BDB72D6A9 /* GameState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
-		7340492F37DFC6A01FA96A15 /* FocusSessionPlan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FocusSessionPlan.swift; sourceTree = "<group>"; };
-		7672EC7D7A825A14AA4416DD /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = "<group>"; };
-		7E471DA2526411FEBD4383D5 /* IdleWorldWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldWidget.swift; sourceTree = "<group>"; };
-		83CD9100935F31FD663B8223 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		84A4276B5EA4B284A2B1777E /* ShopView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
-		A2EA3E5F7A8CE15777ED5A34 /* IdleWorldWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IdleWorldWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3384472E0E1EFEC92F1B0E7 /* AppConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
-		BACAB4991C69E838D4B2D6D1 /* Upgrade.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
-		BDFE93AE2E10F427528EA232 /* IdleWorldWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldWidgetBundle.swift; sourceTree = "<group>"; };
-		BF05CCB2A5FA03306FFFD416 /* PostcardRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostcardRenderer.swift; sourceTree = "<group>"; };
-		C431501C1F923E522B9A69F8 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		C49A20CBD3812B0BE4FFBC4F /* DeepFocusActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepFocusActivityAttributes.swift; sourceTree = "<group>"; };
-		CBD52A43D83D1E76A5A62833 /* FocusSessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FocusSessionManager.swift; sourceTree = "<group>"; };
-		D043A867489240D75E3EE4FA /* WidgetStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetStore.swift; sourceTree = "<group>"; };
-		D99B2F6DFBD83D86E73AB977 /* GameStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
-		E07BC6981CFFA7829497A710 /* DeepFocusLiveActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepFocusLiveActivity.swift; sourceTree = "<group>"; };
-		EAD897C77AE50A4D4114B279 /* IdleWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdleWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEBBA47B42E426C6CC525609 /* Haptics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
-		F1A6F51A68259CD7D5E02F04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		F293A5BC1C86D70880118DF0 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		00C9222902E8A94AB09F27C1 /* ScreenTimeService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScreenTimeService.swift; sourceTree = "<group>"; };
+		0267E74752504563BA5E0EDB /* LottieView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		0EE726810235C71E4F27A50B /* DeepFocusLiveActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepFocusLiveActivity.swift; sourceTree = "<group>"; };
+		13A86B3E23C34C848E645A7B /* CampArtwork.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CampArtwork.swift; sourceTree = "<group>"; };
+		19C7CE43FB3B0FA82898BB37 /* WorldTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorldTheme.swift; sourceTree = "<group>"; };
+		1BCE6F2CFE896B154008CC43 /* AppTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		2116F4768A9C58AA0D2ECA1C /* IdleWorldScreenTimeMonitorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IdleWorldScreenTimeMonitorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		239438BDFC7416E78F43F697 /* sun.json */ = {isa = PBXFileReference; includeInIndex = 1; path = sun.json; sourceTree = "<group>"; };
+		239FAB35373D8B1D14551CEC /* IdleWorldWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldWidgetBundle.swift; sourceTree = "<group>"; };
+		29A0CBFF7AF508478A0429C0 /* FocusSessionPlan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FocusSessionPlan.swift; sourceTree = "<group>"; };
+		2F8B09AE79CDA19417544D47 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = "<group>"; };
+		30BFA53C634A615B9D6B09F5 /* IdleWorldWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IdleWorldWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		34BCF8FE871A878B634AB462 /* GameState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		46757BD108A8B25237568A24 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = "<group>"; };
+		4EFC7677F743E8C11D6F4CAE /* IdleWorldApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldApp.swift; sourceTree = "<group>"; };
+		5E4EB48BD40F9C0A54C7809A /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = "<group>"; };
+		5EC15175EF305F03503A5BA2 /* FamilyControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FamilyControls.framework; path = System/Library/Frameworks/FamilyControls.framework; sourceTree = "<group>"; };
+		5FC39633952EE4148EE4C610 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = "<group>"; };
+		6585B2CE93F59E5875F31910 /* ScreenTimeMonitorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScreenTimeMonitorExtension.swift; sourceTree = "<group>"; };
+		6A23AFA78FD9F7E2CE5206AF /* GameStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
+		8A3097D26E37452A46BEC721 /* campfire.json */ = {isa = PBXFileReference; includeInIndex = 1; path = campfire.json; sourceTree = "<group>"; };
+		8D9E528A3C96FD5E8D6BCC8F /* AppConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		9F5D0D4C38F87972D1086956 /* FocusSessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FocusSessionManager.swift; sourceTree = "<group>"; };
+		A33FA67DF33BF373A411DE83 /* HealthBonusService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthBonusService.swift; sourceTree = "<group>"; };
+		A4C0C4A009F0E7842392C334 /* DeepFocusActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepFocusActivityAttributes.swift; sourceTree = "<group>"; };
+		A82881AAAA9E6B9B23CCBCF9 /* WidgetStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetStore.swift; sourceTree = "<group>"; };
+		AC615CCD98B0C44995B75242 /* ShopView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		ADB64E7D08A08039BD42E38A /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		B015CFF18F7C3C247E53A2E9 /* IdleWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdleWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8BA215A311C4F608E59A16C /* ManagedSettings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ManagedSettings.framework; path = System/Library/Frameworks/ManagedSettings.framework; sourceTree = "<group>"; };
+		BC8692DE91348339153002D7 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CDC67DDEF4BBE243E33D1FE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D05C2CF427ECAE53C31A63ED /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D2AE41ED31C233E0ED4367A6 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DE55A41912A7788D0E8B329E /* Haptics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		E3BD0D942E4F46B2760A20D8 /* CampLottiePanel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CampLottiePanel.swift; sourceTree = "<group>"; };
+		E62D278FBFB9A242A4DA8352 /* IdleWorldWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldWidget.swift; sourceTree = "<group>"; };
+		EA0C15B1D4A27B527C46A068 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = "<group>"; };
+		F53837B085664848FA5E97A4 /* SessionLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionLog.swift; sourceTree = "<group>"; };
+		FC10006B215DF71206744374 /* PostcardRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostcardRenderer.swift; sourceTree = "<group>"; };
+		FF5F22EA431534A7405764EC /* Upgrade.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		30BE00EF95EAE6F4DE604F84 /* Frameworks */ = {
+		E2BA752F909F4E6D266CD45D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5E0108128DCE82EA9F8BF40 /* Foundation.framework in Frameworks */,
-				8B8497C8A88957B880D6D403 /* ActivityKit.framework in Frameworks */,
-				3F8C3E2E4A9F36FD8424923A /* SwiftUI.framework in Frameworks */,
-				CF5DE92083EB72D74E412A45 /* WidgetKit.framework in Frameworks */,
-				A119F5317DA70FD1643DEC52 /* HealthKit.framework in Frameworks */,
+				ABAB187C96332ED521CF8688 /* Foundation.framework in Frameworks */,
+				4476C254C84719BF533CB21F /* Lottie in Frameworks */,
+				E0447E0F14D506FC5D6DEFAB /* ActivityKit.framework in Frameworks */,
+				7115BD375687A353963271AA /* SwiftUI.framework in Frameworks */,
+				B42A06FEAF5BB430B3EE5F52 /* WidgetKit.framework in Frameworks */,
+				F7914CD8C502C2FB1B64A3C0 /* HealthKit.framework in Frameworks */,
+				E9F453BAA3330A2F32931523 /* FamilyControls.framework in Frameworks */,
+				011E6B715A92A440DC4117AB /* DeviceActivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7A9A994BA906E27475851BD /* Frameworks */ = {
+		EF01F2C2211953D890A00EDF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B8ABBA4C400C8FF1D829280 /* Foundation.framework in Frameworks */,
-				7851251486BCBA0A15DB87CF /* ActivityKit.framework in Frameworks */,
-				DC51D45451BBCEC1BB495D85 /* SwiftUI.framework in Frameworks */,
-				1EF40A72980F29E29EA9B506 /* WidgetKit.framework in Frameworks */,
+				C4F3713512D47DADBC3B5155 /* Foundation.framework in Frameworks */,
+				55771ED0C5AF98CE5CBFB71C /* ActivityKit.framework in Frameworks */,
+				ACB3E93177AB67F2B4D9B1F8 /* SwiftUI.framework in Frameworks */,
+				4D104D2F7FD1DF77D4205DD9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA7F6202591EE17FDFD84614 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C1369A64A47E87AA39D7FDF /* Foundation.framework in Frameworks */,
+				C2507D4AD0992FCC7E118CF9 /* FamilyControls.framework in Frameworks */,
+				2B570ABA2E70119AD64E9441 /* DeviceActivity.framework in Frameworks */,
+				90AF151ED593E2CA6E2FBE18 /* ManagedSettings.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23E06B1C4368F40BD54D952A = {
+		004A714F06976CD0010C4BC4 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				8402BC91A3CF275CE5EBFA0B /* Products */,
-				C4F7C4FCAFBC16BCCC94C2CD /* Frameworks */,
-				B9187B8A5AF1BF86D23FA387 /* App */,
-				33C6DA47268338714628F0A3 /* Shared */,
-				715CCEF46158DA9185CF3F27 /* WidgetExtension */,
+				8A3097D26E37452A46BEC721 /* campfire.json */,
+				239438BDFC7416E78F43F697 /* sun.json */,
 			);
+			name = Lottie;
+			path = Lottie;
 			sourceTree = "<group>";
 		};
-		2698D717F4907C6038236315 /* Theme */ = {
+		0254A0E3167CD1A853FBCF58 /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				00679D846935ED2876A49D72 /* AppTheme.swift */,
+				AC615CCD98B0C44995B75242 /* ShopView.swift */,
 			);
-			path = Theme;
+			name = Shop;
+			path = Shop;
 			sourceTree = "<group>";
 		};
-		33C6DA47268338714628F0A3 /* Shared */ = {
+		26A22D1E7722DBB5F588686D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				C389484AC01EA9106869E393 /* Activities */,
-				7A04579000AD4E26D7E044CD /* Models */,
-				43AB4FB24C8A9DF698DD316A /* Services */,
-				D941EE07FA68DA4EF1B9E05D /* Storage */,
-				FC89C517C7A7376C5BB14A7A /* Support */,
-				2698D717F4907C6038236315 /* Theme */,
-				4522A86A8DC7EC004A7F79B4 /* UI */,
+				B8681254E0070B028D0413B7 /* Activities */,
+				B6D5F2838A68299F29769621 /* Models */,
+				2DACE652C71BA7579AC7FBC9 /* Services */,
+				53FD77E7A41A5AC24765443E /* Storage */,
+				A60334CCAE05659D8CEC6996 /* Support */,
+				D26D345D1A8A26605648E59A /* Theme */,
+				B173F21D4C37F8E7D5FCF808 /* UI */,
 			);
+			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		3C4563813C57B6B648C81D7A /* Home */ = {
+		2DACE652C71BA7579AC7FBC9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				F293A5BC1C86D70880118DF0 /* HomeView.swift */,
+				9F5D0D4C38F87972D1086956 /* FocusSessionManager.swift */,
+				A33FA67DF33BF373A411DE83 /* HealthBonusService.swift */,
+				FC10006B215DF71206744374 /* PostcardRenderer.swift */,
+				00C9222902E8A94AB09F27C1 /* ScreenTimeService.swift */,
 			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		43AB4FB24C8A9DF698DD316A /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				CBD52A43D83D1E76A5A62833 /* FocusSessionManager.swift */,
-				4A5F5F256709E1075FE6D261 /* HealthBonusService.swift */,
-				BF05CCB2A5FA03306FFFD416 /* PostcardRenderer.swift */,
-			);
+			name = Services;
 			path = Services;
 			sourceTree = "<group>";
 		};
-		4522A86A8DC7EC004A7F79B4 /* UI */ = {
+		3B4F27A17D96E2106318A098 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5EBFEF35B725F4BDB401AF46 /* CampArtwork.swift */,
+				004A714F06976CD0010C4BC4 /* Lottie */,
 			);
-			path = UI;
+			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		5E7DFDFCFC54B34045911F19 /* Onboarding */ = {
+		45EBEB4C7CC82429E8BAF59D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C431501C1F923E522B9A69F8 /* OnboardingView.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		715CCEF46158DA9185CF3F27 /* WidgetExtension */ = {
-			isa = PBXGroup;
-			children = (
-				E07BC6981CFFA7829497A710 /* DeepFocusLiveActivity.swift */,
-				7E471DA2526411FEBD4383D5 /* IdleWorldWidget.swift */,
-				BDFE93AE2E10F427528EA232 /* IdleWorldWidgetBundle.swift */,
-				D043A867489240D75E3EE4FA /* WidgetStore.swift */,
-			);
-			path = WidgetExtension;
-			sourceTree = "<group>";
-		};
-		7A04579000AD4E26D7E044CD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7340492F37DFC6A01FA96A15 /* FocusSessionPlan.swift */,
-				6EE918010F19872BDB72D6A9 /* GameState.swift */,
-				31A93618723EACD327F01B23 /* SessionLog.swift */,
-				BACAB4991C69E838D4B2D6D1 /* Upgrade.swift */,
-				46F289447A18E07C2F3F0A8E /* WorldTheme.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		8402BC91A3CF275CE5EBFA0B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EAD897C77AE50A4D4114B279 /* IdleWorld.app */,
-				A2EA3E5F7A8CE15777ED5A34 /* IdleWorldWidgetExtension.appex */,
+				B015CFF18F7C3C247E53A2E9 /* IdleWorld.app */,
+				30BFA53C634A615B9D6B09F5 /* IdleWorldWidgetExtension.appex */,
+				2116F4768A9C58AA0D2ECA1C /* IdleWorldScreenTimeMonitorExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		881CDAAA929AC376983CEAF8 /* iOS */ = {
+		53FD77E7A41A5AC24765443E /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				F1A6F51A68259CD7D5E02F04 /* Foundation.framework */,
+				6A23AFA78FD9F7E2CE5206AF /* GameStore.swift */,
+			);
+			name = Storage;
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		598CC67B19335BA654938F52 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				71BE39CE19D6642278A6FF41 /* Home */,
+				61329A8AE95CBDE4E4272ABD /* Onboarding */,
+				0254A0E3167CD1A853FBCF58 /* Shop */,
+			);
+			name = Features;
+			path = Features;
+			sourceTree = "<group>";
+		};
+		61329A8AE95CBDE4E4272ABD /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BC8692DE91348339153002D7 /* OnboardingView.swift */,
+			);
+			name = Onboarding;
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		694CCA6ABB3F180E7ECF27A8 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CDC67DDEF4BBE243E33D1FE8 /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		B5EDAA5F9A6DA9F1957F8B2E /* Features */ = {
+		71BE39CE19D6642278A6FF41 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3C4563813C57B6B648C81D7A /* Home */,
-				5E7DFDFCFC54B34045911F19 /* Onboarding */,
-				F8EDE2371415BF24BD81F053 /* Shop */,
+				E3BD0D942E4F46B2760A20D8 /* CampLottiePanel.swift */,
+				D2AE41ED31C233E0ED4367A6 /* HomeView.swift */,
 			);
-			path = Features;
+			name = Home;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		B9187B8A5AF1BF86D23FA387 /* App */ = {
+		83ADD58E418AD7FBD762240D /* App */ = {
 			isa = PBXGroup;
 			children = (
-				B5EDAA5F9A6DA9F1957F8B2E /* Features */,
-				3D658E7FE0F78BA70C49556F /* IdleWorldApp.swift */,
-				83CD9100935F31FD663B8223 /* RootView.swift */,
-				03D9A93F215B9AF2E9C95ADB /* Assets.xcassets */,
+				598CC67B19335BA654938F52 /* Features */,
+				4EFC7677F743E8C11D6F4CAE /* IdleWorldApp.swift */,
+				ADB64E7D08A08039BD42E38A /* RootView.swift */,
+				D8714149366C3577746B7B48 /* Support */,
+				D05C2CF427ECAE53C31A63ED /* Assets.xcassets */,
+				3B4F27A17D96E2106318A098 /* Resources */,
 			);
+			name = App;
 			path = App;
 			sourceTree = "<group>";
 		};
-		C389484AC01EA9106869E393 /* Activities */ = {
+		A5807380B966E71E6A5546A7 = {
 			isa = PBXGroup;
 			children = (
-				C49A20CBD3812B0BE4FFBC4F /* DeepFocusActivityAttributes.swift */,
+				45EBEB4C7CC82429E8BAF59D /* Products */,
+				F079B67DBAD64EF28B0C4BC5 /* Frameworks */,
+				83ADD58E418AD7FBD762240D /* App */,
+				26A22D1E7722DBB5F588686D /* Shared */,
+				D3488004CDDDA639A5E93A84 /* WidgetExtension */,
+				C3A2DBAED26DF331863EC9C6 /* ScreenTimeMonitorExtension */,
 			);
+			sourceTree = "<group>";
+		};
+		A60334CCAE05659D8CEC6996 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8D9E528A3C96FD5E8D6BCC8F /* AppConfig.swift */,
+				DE55A41912A7788D0E8B329E /* Haptics.swift */,
+			);
+			name = Support;
+			path = Support;
+			sourceTree = "<group>";
+		};
+		B173F21D4C37F8E7D5FCF808 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				13A86B3E23C34C848E645A7B /* CampArtwork.swift */,
+			);
+			name = UI;
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B6D5F2838A68299F29769621 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				29A0CBFF7AF508478A0429C0 /* FocusSessionPlan.swift */,
+				34BCF8FE871A878B634AB462 /* GameState.swift */,
+				F53837B085664848FA5E97A4 /* SessionLog.swift */,
+				FF5F22EA431534A7405764EC /* Upgrade.swift */,
+				19C7CE43FB3B0FA82898BB37 /* WorldTheme.swift */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B8681254E0070B028D0413B7 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				A4C0C4A009F0E7842392C334 /* DeepFocusActivityAttributes.swift */,
+			);
+			name = Activities;
 			path = Activities;
 			sourceTree = "<group>";
 		};
-		C4F7C4FCAFBC16BCCC94C2CD /* Frameworks */ = {
+		C3A2DBAED26DF331863EC9C6 /* ScreenTimeMonitorExtension */ = {
 			isa = PBXGroup;
 			children = (
-				881CDAAA929AC376983CEAF8 /* iOS */,
-				22E8BC9F499FF6F5CB1BAF6A /* ActivityKit.framework */,
-				5A4D375C7D7DB52DCEBBF43F /* SwiftUI.framework */,
-				053D1FD6F4525D2BB035EC49 /* WidgetKit.framework */,
-				7672EC7D7A825A14AA4416DD /* HealthKit.framework */,
+				6585B2CE93F59E5875F31910 /* ScreenTimeMonitorExtension.swift */,
+			);
+			name = ScreenTimeMonitorExtension;
+			path = ScreenTimeMonitorExtension;
+			sourceTree = "<group>";
+		};
+		D26D345D1A8A26605648E59A /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				1BCE6F2CFE896B154008CC43 /* AppTheme.swift */,
+			);
+			name = Theme;
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		D3488004CDDDA639A5E93A84 /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				0EE726810235C71E4F27A50B /* DeepFocusLiveActivity.swift */,
+				E62D278FBFB9A242A4DA8352 /* IdleWorldWidget.swift */,
+				239FAB35373D8B1D14551CEC /* IdleWorldWidgetBundle.swift */,
+				A82881AAAA9E6B9B23CCBCF9 /* WidgetStore.swift */,
+			);
+			name = WidgetExtension;
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		D8714149366C3577746B7B48 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				0267E74752504563BA5E0EDB /* LottieView.swift */,
+			);
+			name = Support;
+			path = Support;
+			sourceTree = "<group>";
+		};
+		F079B67DBAD64EF28B0C4BC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				694CCA6ABB3F180E7ECF27A8 /* iOS */,
+				5FC39633952EE4148EE4C610 /* ActivityKit.framework */,
+				EA0C15B1D4A27B527C46A068 /* SwiftUI.framework */,
+				46757BD108A8B25237568A24 /* WidgetKit.framework */,
+				2F8B09AE79CDA19417544D47 /* HealthKit.framework */,
+				5EC15175EF305F03503A5BA2 /* FamilyControls.framework */,
+				5E4EB48BD40F9C0A54C7809A /* DeviceActivity.framework */,
+				B8BA215A311C4F608E59A16C /* ManagedSettings.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D941EE07FA68DA4EF1B9E05D /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				D99B2F6DFBD83D86E73AB977 /* GameStore.swift */,
-			);
-			path = Storage;
-			sourceTree = "<group>";
-		};
-		F8EDE2371415BF24BD81F053 /* Shop */ = {
-			isa = PBXGroup;
-			children = (
-				84A4276B5EA4B284A2B1777E /* ShopView.swift */,
-			);
-			path = Shop;
-			sourceTree = "<group>";
-		};
-		FC89C517C7A7376C5BB14A7A /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				A3384472E0E1EFEC92F1B0E7 /* AppConfig.swift */,
-				EEBBA47B42E426C6CC525609 /* Haptics.swift */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		471115B7827B8D38328E82CD /* IdleWorldWidgetExtension */ = {
+		057053E44D65A34D32E1E0AA /* IdleWorldScreenTimeMonitorExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 712A129A3F80E354F01A4712 /* Build configuration list for PBXNativeTarget "IdleWorldWidgetExtension" */;
+			buildConfigurationList = 5F2355D42ED6D7883CB00780 /* Build configuration list for PBXNativeTarget "IdleWorldScreenTimeMonitorExtension" */;
 			buildPhases = (
-				DFBA503BCEF1823467F646F1 /* Sources */,
-				A7A9A994BA906E27475851BD /* Frameworks */,
-				717C72C807215A750A6DC930 /* Resources */,
+				CA2530C737F3B7F2EBDD28CB /* Sources */,
+				FA7F6202591EE17FDFD84614 /* Frameworks */,
+				DAEA152C2888CD85CF45C0C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdleWorldScreenTimeMonitorExtension;
+			productName = IdleWorldScreenTimeMonitorExtension;
+			productReference = 2116F4768A9C58AA0D2ECA1C /* IdleWorldScreenTimeMonitorExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		27FD7291DD121F3F070C6E2B /* IdleWorldWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB1B328E6F85AFEB4EEFDF49 /* Build configuration list for PBXNativeTarget "IdleWorldWidgetExtension" */;
+			buildPhases = (
+				CA83A10BD3C3C54F8165A4BF /* Sources */,
+				EF01F2C2211953D890A00EDF /* Frameworks */,
+				AEA62FA80175C2E8F8E1681C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -320,38 +448,40 @@
 			);
 			name = IdleWorldWidgetExtension;
 			productName = IdleWorldWidgetExtension;
-			productReference = A2EA3E5F7A8CE15777ED5A34 /* IdleWorldWidgetExtension.appex */;
+			productReference = 30BFA53C634A615B9D6B09F5 /* IdleWorldWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		C0906CEFA6AA010A71A713F5 /* IdleWorld */ = {
+		3FC68F2783457125D15AC053 /* IdleWorld */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AF3E75D6040D48FFBBEBCDAC /* Build configuration list for PBXNativeTarget "IdleWorld" */;
+			buildConfigurationList = BC08DE8CDD0DB7947E8D9FE4 /* Build configuration list for PBXNativeTarget "IdleWorld" */;
 			buildPhases = (
-				37164491FED9D50631D491B4 /* Sources */,
-				30BE00EF95EAE6F4DE604F84 /* Frameworks */,
-				952462BACCDB077C7E3BB785 /* Resources */,
-				586D1194851A3D1B7BAE44C6 /* Embed Foundation Extensions */,
+				994E4920D1D3FB12E69C893E /* Sources */,
+				E2BA752F909F4E6D266CD45D /* Frameworks */,
+				EB57E9A52B1FEBBBC6D2F28F /* Resources */,
+				21796945B909BCCCB7336B98 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = IdleWorld;
+			packageProductDependencies = (
+				37233FBA8C3EE2779D17634C /* Lottie */,
+			);
 			productName = IdleWorld;
-			productReference = EAD897C77AE50A4D4114B279 /* IdleWorld.app */;
+			productReference = B015CFF18F7C3C247E53A2E9 /* IdleWorld.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		94F4264F8E23D1BFE7D4BE45 /* Project object */ = {
+		7C3C169D544E747478BFC1C4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 2600;
-				LastUpgradeCheck = 2650;
+				LastUpgradeCheck = 2600;
 			};
-			buildConfigurationList = A5559709A7EEC25B7F9D073C /* Build configuration list for PBXProject "IdleWorld" */;
+			buildConfigurationList = B9904837D4E9A8C5FA4FD2A8 /* Build configuration list for PBXProject "IdleWorld" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -359,110 +489,127 @@
 				en,
 				Base,
 			);
-			mainGroup = 23E06B1C4368F40BD54D952A;
-			productRefGroup = 8402BC91A3CF275CE5EBFA0B /* Products */;
+			mainGroup = A5807380B966E71E6A5546A7;
+			minimizedProjectReferenceProxies = 0;
+			packageReferences = (
+				5C72BF0D758E7925DAB3F1B8 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 45EBEB4C7CC82429E8BAF59D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C0906CEFA6AA010A71A713F5 /* IdleWorld */,
-				471115B7827B8D38328E82CD /* IdleWorldWidgetExtension */,
+				3FC68F2783457125D15AC053 /* IdleWorld */,
+				27FD7291DD121F3F070C6E2B /* IdleWorldWidgetExtension */,
+				057053E44D65A34D32E1E0AA /* IdleWorldScreenTimeMonitorExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		717C72C807215A750A6DC930 /* Resources */ = {
+		AEA62FA80175C2E8F8E1681C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		952462BACCDB077C7E3BB785 /* Resources */ = {
+		DAEA152C2888CD85CF45C0C5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB9ED51840714DB06C397053 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB57E9A52B1FEBBBC6D2F28F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7069D97C4DE8140CCBE6A2B5 /* Assets.xcassets in Resources */,
+				4AE3268BA5C81496966D259E /* campfire.json in Resources */,
+				AA5BB864A8971C9074599AFD /* sun.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		37164491FED9D50631D491B4 /* Sources */ = {
+		994E4920D1D3FB12E69C893E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				605BBC358D88CA2EB908E0B0 /* HomeView.swift in Sources */,
-				D456F322752D3C163716D142 /* OnboardingView.swift in Sources */,
-				F1D8FBEFF93FE5F77638AD12 /* ShopView.swift in Sources */,
-				B143827B2D251BC757547509 /* IdleWorldApp.swift in Sources */,
-				1CCCFF294191693CD675D393 /* RootView.swift in Sources */,
-				A7446A59C115A468728CB021 /* DeepFocusActivityAttributes.swift in Sources */,
-				FE558C51A3953C403796A23C /* FocusSessionPlan.swift in Sources */,
-				AFFD070221AC4AF4D8315188 /* GameState.swift in Sources */,
-				75BC3F6566FF665B1C92C7C4 /* SessionLog.swift in Sources */,
-				47BA752A69F0E6284EA2D5FD /* Upgrade.swift in Sources */,
-				E5BD04C0CE8E78C045867A43 /* WorldTheme.swift in Sources */,
-				C3D9AD70BF82821BE0659630 /* FocusSessionManager.swift in Sources */,
-				6A84804746A101E1446CE694 /* HealthBonusService.swift in Sources */,
-				C2A3A6BA76E22E02E960CF88 /* PostcardRenderer.swift in Sources */,
-				6D6C0DD985A6EF41BAB82D1C /* GameStore.swift in Sources */,
-				98890734B0FBBD387EEB193A /* AppConfig.swift in Sources */,
-				B9CD9D0995C5BD6C7644FD7F /* Haptics.swift in Sources */,
-				D2029CEDE8D336ABA21E2377 /* AppTheme.swift in Sources */,
-				3996CC999792FAF7FF726D80 /* CampArtwork.swift in Sources */,
+				E13365526A3BF9F1F42EDFFA /* CampLottiePanel.swift in Sources */,
+				19AA88935F84EAE3A7551A0C /* HomeView.swift in Sources */,
+				48641CA51A26CFB6BFA9F22C /* OnboardingView.swift in Sources */,
+				352402DAD29F0AED3D72226B /* ShopView.swift in Sources */,
+				F830A66B6C8B8ED5C7BA8C29 /* IdleWorldApp.swift in Sources */,
+				7569D127039328D695C80A14 /* RootView.swift in Sources */,
+				94C5FB99CFABD571CA6C8360 /* LottieView.swift in Sources */,
+				26827F1BCA7465AF65439A3D /* DeepFocusActivityAttributes.swift in Sources */,
+				0E308F82A7A006D2B012CD8E /* FocusSessionPlan.swift in Sources */,
+				05890BCB24B02E48C7EFE3FB /* GameState.swift in Sources */,
+				4A3F3760761D0420D6CEAA89 /* SessionLog.swift in Sources */,
+				1B1DDA28269C6B9A3678B4B8 /* Upgrade.swift in Sources */,
+				407316548794F240952B8DD3 /* WorldTheme.swift in Sources */,
+				682F02125724004F407C97A8 /* FocusSessionManager.swift in Sources */,
+				256A6BE3C3612F75A32D556A /* HealthBonusService.swift in Sources */,
+				3AC460FF171A8EAF4C32458B /* PostcardRenderer.swift in Sources */,
+				D5E9591148DE41B9DE220D21 /* ScreenTimeService.swift in Sources */,
+				598B62F47A548AA0393BE4A2 /* GameStore.swift in Sources */,
+				6B6D238006F4D0943FA5ACCF /* AppConfig.swift in Sources */,
+				B82C6B01652B2F63F090B04B /* Haptics.swift in Sources */,
+				F257409AA8FD37F43AB32BDF /* AppTheme.swift in Sources */,
+				2530DD18FCC6E7FCDB26096C /* CampArtwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DFBA503BCEF1823467F646F1 /* Sources */ = {
+		CA2530C737F3B7F2EBDD28CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E4BD30A98889DFD8365FA22 /* DeepFocusActivityAttributes.swift in Sources */,
-				A16064360D878D1E1DD073D0 /* FocusSessionPlan.swift in Sources */,
-				37D07C2332613FBCA779E87B /* GameState.swift in Sources */,
-				DAE0D3ABC7F948F5CB85BA09 /* SessionLog.swift in Sources */,
-				6C559E13187805E442CE6EF4 /* Upgrade.swift in Sources */,
-				6FD99A59FB5C3D4A5D9D9E23 /* WorldTheme.swift in Sources */,
-				E028EE3E58201C089EBA9B34 /* FocusSessionManager.swift in Sources */,
-				8F10F43477270649D36C0755 /* GameStore.swift in Sources */,
-				9D5CC8EB5A36A26E13DF28EC /* AppConfig.swift in Sources */,
-				2BD72D71D91D7BD86AB485D7 /* Haptics.swift in Sources */,
-				A6DBF4706A402D1EB1B722A7 /* AppTheme.swift in Sources */,
-				84238806DA07F80972761AFB /* CampArtwork.swift in Sources */,
-				8C4E7F037DF6710E9C40F0F2 /* DeepFocusLiveActivity.swift in Sources */,
-				161F1BEA3DD72A09E013577C /* IdleWorldWidget.swift in Sources */,
-				84B3C9D26765FEAB1EF5729D /* IdleWorldWidgetBundle.swift in Sources */,
-				B9359A1C8039561DDA78E761 /* WidgetStore.swift in Sources */,
+				CC640830BDC842893FBC1658 /* DeepFocusActivityAttributes.swift in Sources */,
+				0D525D5312C9E83229283F09 /* FocusSessionPlan.swift in Sources */,
+				EAE3E59CE658B2F97201A4F7 /* GameState.swift in Sources */,
+				D6036A3ABF6E6D8A2A12030D /* SessionLog.swift in Sources */,
+				3647005A9844AC6215641B6E /* Upgrade.swift in Sources */,
+				75B7BFE631D800C1E567A760 /* WorldTheme.swift in Sources */,
+				2F7A7974125E1FF0B7947D29 /* FocusSessionManager.swift in Sources */,
+				B82FF9C124117D8E36A070D8 /* GameStore.swift in Sources */,
+				B96DAB995D5A456A02020FB6 /* AppConfig.swift in Sources */,
+				9CB008611E42C03D9D5C03D4 /* Haptics.swift in Sources */,
+				D3E5F5BE122951DD182FA28D /* AppTheme.swift in Sources */,
+				F80755821E7E93E2E9550D70 /* CampArtwork.swift in Sources */,
+				F3628298327237C15E0BC554 /* ScreenTimeMonitorExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA83A10BD3C3C54F8165A4BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E12FAB7782065C430805E10D /* DeepFocusActivityAttributes.swift in Sources */,
+				E71405BC2B3B29D32F01C05C /* FocusSessionPlan.swift in Sources */,
+				EAB8590D96C922C0CB6068D6 /* GameState.swift in Sources */,
+				4870E5A323231D04CB079B38 /* SessionLog.swift in Sources */,
+				A1973CEA95A79B63F6368956 /* Upgrade.swift in Sources */,
+				11A15DF611DB5013AD487F77 /* WorldTheme.swift in Sources */,
+				854CB9CFC1CBD7FB061DEBED /* FocusSessionManager.swift in Sources */,
+				C5B1B97961119F28986A16DC /* GameStore.swift in Sources */,
+				B82177B4097962298799768A /* AppConfig.swift in Sources */,
+				59BF08F95252DB5A703F6FEA /* Haptics.swift in Sources */,
+				610E5503827CBFE38B03CBBF /* AppTheme.swift in Sources */,
+				ECF4805107808C6E44633B5F /* CampArtwork.swift in Sources */,
+				0FF253612BD256C88E0017D0 /* DeepFocusLiveActivity.swift in Sources */,
+				91C437A5DAFA4B7C4294677C /* IdleWorldWidget.swift in Sources */,
+				A04A39397E594D0D0822D0BB /* IdleWorldWidgetBundle.swift in Sources */,
+				CC46D794DE637626DFE930BC /* WidgetStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1B8EC1C66DD4D7841D1A04E4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldWidget.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = WidgetExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.finreeal.idleworld.widget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		30A6D7091ADB567474E3AF84 /* Debug */ = {
+		240FC5EEEB34C7F3FB4C8508 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -496,12 +643,86 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		481E8875F6C2C43AC0B45257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldScreenTimeMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScreenTimeMonitorExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finreeal.idleworld.monitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6615BB6B5BF3C0576028B900 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = VTJL2NTSKP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -521,73 +742,36 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		800F7F5C504D7CDB48BE6635 /* Release */ = {
+		7D86D2F8C693C3E09582BF08 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = VTJL2NTSKP;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldScreenTimeMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScreenTimeMonitorExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finreeal.idleworld.monitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		B4F07243C42D950479A3D32B /* Release */ = {
+		B411FC63B2496B99472D65FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -596,6 +780,7 @@
 				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -609,7 +794,7 @@
 			};
 			name = Release;
 		};
-		BAFC695DE29E7672F67888BA /* Release */ = {
+		E430D11DA9A23C6233002643 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -619,19 +804,68 @@
 				CODE_SIGN_ENTITLEMENTS = Config/IdleWorld.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Idle World";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Idle World uses your step count to reward real-world movement with faster camp production.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Idle World používá počet tvých kroků k udělení bonusu za pohyb ve skutečném světě.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finreeal.idleworld;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E866C0B72E20512EA00BE313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finreeal.idleworld.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F5B75589FB981402F1274AE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorld.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Idle World";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Idle World používá počet tvých kroků k udělení bonusu za pohyb ve skutečném světě.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finreeal.idleworld;
 				SDKROOT = iphoneos;
@@ -641,68 +875,65 @@
 			};
 			name = Release;
 		};
-		F34A90E545F3885608931CA7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_ENTITLEMENTS = Config/IdleWorld.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Idle World";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Idle World uses your step count to reward real-world movement with faster camp production.";
-				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.finreeal.idleworld;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		712A129A3F80E354F01A4712 /* Build configuration list for PBXNativeTarget "IdleWorldWidgetExtension" */ = {
+		5F2355D42ED6D7883CB00780 /* Build configuration list for PBXNativeTarget "IdleWorldScreenTimeMonitorExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B4F07243C42D950479A3D32B /* Release */,
-				1B8EC1C66DD4D7841D1A04E4 /* Debug */,
+				7D86D2F8C693C3E09582BF08 /* Release */,
+				481E8875F6C2C43AC0B45257 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A5559709A7EEC25B7F9D073C /* Build configuration list for PBXProject "IdleWorld" */ = {
+		B9904837D4E9A8C5FA4FD2A8 /* Build configuration list for PBXProject "IdleWorld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				30A6D7091ADB567474E3AF84 /* Debug */,
-				800F7F5C504D7CDB48BE6635 /* Release */,
+				6615BB6B5BF3C0576028B900 /* Debug */,
+				240FC5EEEB34C7F3FB4C8508 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AF3E75D6040D48FFBBEBCDAC /* Build configuration list for PBXNativeTarget "IdleWorld" */ = {
+		BC08DE8CDD0DB7947E8D9FE4 /* Build configuration list for PBXNativeTarget "IdleWorld" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BAFC695DE29E7672F67888BA /* Release */,
-				F34A90E545F3885608931CA7 /* Debug */,
+				F5B75589FB981402F1274AE8 /* Release */,
+				E430D11DA9A23C6233002643 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB1B328E6F85AFEB4EEFDF49 /* Build configuration list for PBXNativeTarget "IdleWorldWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B411FC63B2496B99472D65FF /* Release */,
+				E866C0B72E20512EA00BE313 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5C72BF0D758E7925DAB3F1B8 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		37233FBA8C3EE2779D17634C /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5C72BF0D758E7925DAB3F1B8 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 94F4264F8E23D1BFE7D4BE45 /* Project object */;
+	rootObject = 7C3C169D544E747478BFC1C4 /* Project object */;
 }

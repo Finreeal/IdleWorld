@@ -10,10 +10,10 @@ enum FocusSessionPreset: String, CaseIterable, Identifiable, Codable {
 
     var title: String {
         switch self {
-        case .sprint15: return "Sprint"
-        case .balance30: return "Balance"
-        case .deep45: return "Deep"
-        case .ritual60: return "Ritual"
+        case .sprint15: return "Rychlý sprint"
+        case .balance30: return "Klidný blok"
+        case .deep45: return "Hluboké ponoření"
+        case .ritual60: return "Večerní rituál"
         }
     }
 
@@ -37,6 +37,15 @@ enum FocusSessionPreset: String, CaseIterable, Identifiable, Codable {
 
     var subtitle: String {
         "\(durationMinutes) min • \(String(format: "%.2fx", rewardMultiplier)) odměna"
+    }
+
+    var actionTitle: String {
+        switch self {
+        case .sprint15: return "Spustit rychlý sprint"
+        case .balance30: return "Spustit klidný blok"
+        case .deep45: return "Spustit hluboké ponoření"
+        case .ritual60: return "Spustit večerní rituál"
+        }
     }
 }
 
@@ -76,6 +85,6 @@ struct FocusSessionPlan: Codable, Equatable, Identifiable {
         self.woodRateAtStart = woodRateAtStart
     }
 
-    var title: String { "\(preset.title) Focus" }
+    var title: String { preset.title }
     var duration: TimeInterval { endDate.timeIntervalSince(startDate) }
 }

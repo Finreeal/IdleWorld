@@ -26,7 +26,7 @@ private struct ShopHeroCard: View {
                 .font(.headline)
                 .foregroundStyle(.white)
 
-            Text("Nakupuj nástroje a rozšíření tábora. Každý upgrade se okamžitě promítne do produkce na pozadí i do Deep Focus odměn.")
+            Text("Nakupuj nástroje a rozšíření tábora. Každý upgrade se okamžitě promítne do produkce na pozadí i do odměn za soustředěné bloky.")
                 .font(.callout)
                 .foregroundStyle(AppTheme.mutedText)
 
@@ -90,6 +90,12 @@ private struct UpgradeCard: View {
                     Text(upgrade.description)
                         .font(.callout)
                         .foregroundStyle(AppTheme.mutedText)
+
+                    if upgrade.decorationUnlocked != nil || upgrade.id == "iron_pickaxe" || upgrade.id == "hardened_axe" {
+                        Text("Po nákupu se změna hned objeví i v tábořišti.")
+                            .font(.caption)
+                            .foregroundStyle(AppTheme.mint)
+                    }
                 }
 
                 Spacer()
@@ -122,7 +128,7 @@ private struct UpgradeCard: View {
 
                 Button {
                     gameStore.purchase(upgrade: upgrade)
-                    Haptics.playSuccess()
+                    Haptics.playImpact(style: .soft)
                 } label: {
                     Text(buttonTitle)
                         .font(.subheadline.weight(.bold))

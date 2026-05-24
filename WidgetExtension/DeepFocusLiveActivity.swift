@@ -11,18 +11,13 @@ struct DeepFocusLiveActivity: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    CampArtwork(
-                        level: context.state.campLevel,
-                        decorationCount: context.state.decorationCount,
-                        isWorking: true,
-                        theme: WorldTheme(rawValue: context.state.themeID) ?? .medievalCamp
-                    )
-                    .frame(width: 72, height: 52)
+                    DeepFocusIslandScene(context: context)
+                        .frame(width: 92, height: 58)
                 }
 
                 DynamicIslandExpandedRegion(.trailing) {
                     VStack(alignment: .trailing, spacing: 4) {
-                        Text(context.state.title)
+                        Text("Soustředění")
                             .font(.caption.weight(.bold))
                             .foregroundStyle(.white)
 
@@ -33,24 +28,33 @@ struct DeepFocusLiveActivity: Widget {
                 }
 
                 DynamicIslandExpandedRegion(.bottom) {
-                    HStack {
-                        Label("\(Int(context.state.goldPerMinute)) zl/min", systemImage: "circle.hexagongrid.fill")
-                        Spacer()
-                        Label("\(Int(context.state.woodPerMinute)) dr/min", systemImage: "leaf.fill")
+                    HStack(spacing: 10) {
+                        MetricPill(text: "\(Int(context.state.goldPerMinute)) zl/min", tint: AppTheme.gold)
+                        MetricPill(text: "\(Int(context.state.woodPerMinute)) dř/min", tint: AppTheme.mint)
+                        MetricPill(text: "Tábor \(context.state.campLevel)", tint: .white)
+                        Spacer(minLength: 0)
                     }
-                    .font(.caption)
-                    .foregroundStyle(AppTheme.mutedText)
                 }
             } compactLeading: {
-                Image(systemName: "flame.fill")
-                    .foregroundStyle(AppTheme.gold)
+                ZStack {
+                    Circle()
+                        .fill(AppTheme.gold.opacity(0.22))
+                    Image(systemName: "sparkles")
+                        .font(.caption2.weight(.bold))
+                        .foregroundStyle(AppTheme.gold)
+                }
             } compactTrailing: {
                 Text(timerInterval: Date.now...context.state.endDate, countsDown: true)
                     .font(.caption2.monospacedDigit().weight(.bold))
                     .foregroundStyle(.white)
             } minimal: {
-                Image(systemName: "sparkles")
-                    .foregroundStyle(AppTheme.gold)
+                Circle()
+                    .fill(AppTheme.gold.opacity(0.26))
+                    .overlay(
+                        Image(systemName: "sparkles")
+                            .font(.caption2.weight(.bold))
+                            .foregroundStyle(AppTheme.gold)
+                    )
             }
         }
     }
@@ -60,35 +64,67 @@ private struct DeepFocusLockScreenView: View {
     let context: ActivityViewContext<DeepFocusActivityAttributes>
 
     var body: some View {
-        HStack(spacing: 16) {
+        ZStack(alignment: .bottomLeading) {
             CampArtwork(
                 level: context.state.campLevel,
                 decorationCount: context.state.decorationCount,
                 isWorking: true,
                 theme: WorldTheme(rawValue: context.state.themeID) ?? .medievalCamp
             )
-            .frame(width: 120, height: 84)
+            .overlay(
+                LinearGradient(
+                    colors: [Color.black.opacity(0.22), Color.black.opacity(0.68)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
 
-            VStack(alignment: .leading, spacing: 8) {
-                Text(context.state.title)
-                    .font(.headline.weight(.heavy))
-                    .foregroundStyle(.white)
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(context.state.title)
+                            .font(.headline.weight(.heavy))
+                            .foregroundStyle(.white)
 
-                Text("Deep Focus bezi")
-                    .font(.caption)
-                    .foregroundStyle(AppTheme.mutedText)
+                        Text("Soustředění běží")
+                            .font(.caption)
+                            .foregroundStyle(Color.white.opacity(0.72))
+                    }
 
-                Text(timerInterval: Date.now...context.state.endDate, countsDown: true)
-                    .font(.system(.title2, design: .rounded, weight: .bold))
-                    .foregroundStyle(AppTheme.gold)
+                    Spacer()
 
-                HStack(spacing: 12) {
+                    Text(timerInterval: Date.now...context.state.endDate, countsDown: true)
+                        .font(.system(.title2, design: .rounded, weight: .bold))
+                        .foregroundStyle(AppTheme.gold)
+                }
+
+                HStack(spacing: 10) {
                     MetricPill(text: "\(Int(context.state.goldPerMinute)) zl/min", tint: AppTheme.gold)
-                    MetricPill(text: "\(Int(context.state.woodPerMinute)) dr/min", tint: AppTheme.mint)
+                    MetricPill(text: "\(Int(context.state.woodPerMinute)) dř/min", tint: AppTheme.mint)
+                    MetricPill(text: "Tábor \(context.state.campLevel)", tint: .white)
                 }
             }
+            .padding(16)
         }
-        .padding(.vertical, 8)
+        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+    }
+}
+
+private struct DeepFocusIslandScene: View {
+    let context: ActivityViewContext<DeepFocusActivityAttributes>
+
+    var body: some View {
+        CampArtwork(
+            level: context.state.campLevel,
+            decorationCount: context.state.decorationCount,
+            isWorking: true,
+            theme: WorldTheme(rawValue: context.state.themeID) ?? .medievalCamp
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color.white.opacity(0.08), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 

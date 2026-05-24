@@ -15,8 +15,10 @@ ROOT = File.expand_path("..", __dir__)
 PROJECT_PATH = File.join(ROOT, "IdleWorld.xcodeproj")
 APP_TARGET_NAME = "IdleWorld"
 WIDGET_TARGET_NAME = "IdleWorldWidgetExtension"
+MONITOR_TARGET_NAME = "IdleWorldScreenTimeMonitorExtension"
 APP_BUNDLE_ID = ENV.fetch("IDLEWORLD_APP_BUNDLE_ID", "com.finreeal.idleworld")
 WIDGET_BUNDLE_ID = ENV.fetch("IDLEWORLD_WIDGET_BUNDLE_ID", "com.finreeal.idleworld.widget")
+MONITOR_BUNDLE_ID = ENV.fetch("IDLEWORLD_MONITOR_BUNDLE_ID", "com.finreeal.idleworld.monitor")
 APP_GROUP = ENV.fetch("IDLEWORLD_APP_GROUP", "group.com.finreeal.idleworld")
 DEVELOPMENT_TEAM = ENV.fetch("APPLE_TEAM_ID", "")
 
@@ -32,9 +34,25 @@ main_group = project.main_group
 app_group = main_group.new_group("App", "App")
 shared_group = main_group.new_group("Shared", "Shared")
 widget_group = main_group.new_group("WidgetExtension", "WidgetExtension")
+monitor_group = main_group.new_group("ScreenTimeMonitorExtension", "ScreenTimeMonitorExtension")
 
 app_target = project.new_target(:application, APP_TARGET_NAME, :ios, "17.0")
 widget_target = project.new_target(:app_extension, WIDGET_TARGET_NAME, :ios, "17.0")
+monitor_target = project.new_target(:app_extension, MONITOR_TARGET_NAME, :ios, "17.0")
+
+lottie_package = project.new(Xcodeproj::Project::Object::XCRemoteSwiftPackageReference)
+lottie_package.repositoryURL = "https://github.com/airbnb/lottie-spm.git"
+lottie_package.requirement = { "kind" => "upToNextMajorVersion", "minimumVersion" => "4.5.2" }
+project.root_object.package_references << lottie_package
+
+lottie_product = project.new(Xcodeproj::Project::Object::XCSwiftPackageProductDependency)
+lottie_product.package = lottie_package
+lottie_product.product_name = "Lottie"
+app_target.package_product_dependencies << lottie_product
+
+lottie_build_file = project.new(Xcodeproj::Project::Object::PBXBuildFile)
+lottie_build_file.product_ref = lottie_product
+app_target.frameworks_build_phase.files << lottie_build_file
 
 def add_files_preserving_tree(group, target, subdir, excluded_files = [])
   Dir.glob(File.join(ROOT, subdir, "**/*.swift")).sort.each do |path|
@@ -94,18 +112,27 @@ end
 widget_excluded = %w[
   HealthBonusService.swift
   PostcardRenderer.swift
+  ScreenTimeService.swift
 ]
 
 add_files_preserving_tree(app_group, app_target, "App")
 add_files_preserving_tree(shared_group, app_target, "Shared")
 add_files_preserving_tree(shared_group, widget_target, "Shared", widget_excluded)
 add_files_preserving_tree(widget_group, widget_target, "WidgetExtension")
+add_files_preserving_tree(shared_group, monitor_target, "Shared", widget_excluded)
+add_files_preserving_tree(monitor_group, monitor_target, "ScreenTimeMonitorExtension")
 add_resource_files(app_group, app_target, "App")
 
-[app_target, widget_target].each do |target|
+[app_target, widget_target, monitor_target].each do |target|
   target.build_configurations.each do |config|
     config.build_settings["PRODUCT_BUNDLE_IDENTIFIER"] =
-      target == app_target ? APP_BUNDLE_ID : WIDGET_BUNDLE_ID
+      if target == app_target
+        APP_BUNDLE_ID
+      elsif target == widget_target
+        WIDGET_BUNDLE_ID
+      else
+        MONITOR_BUNDLE_ID
+      end
     config.build_settings["SWIFT_VERSION"] = "5.0"
     config.build_settings["IPHONEOS_DEPLOYMENT_TARGET"] = "17.0"
     config.build_settings["CODE_SIGN_STYLE"] = "Automatic"
@@ -126,13 +153,20 @@ app_target.build_configurations.each do |config|
   config.build_settings["GENERATE_INFOPLIST_FILE"] = "YES"
   config.build_settings["ASSETCATALOG_COMPILER_APPICON_NAME"] = "AppIcon"
   config.build_settings["INFOPLIST_KEY_NSSupportsLiveActivities"] = "YES"
-  config.build_settings["INFOPLIST_KEY_NSHealthShareUsageDescription"] = "Idle World uses your step count to reward real-world movement with faster camp production."
+  config.build_settings["INFOPLIST_KEY_NSHealthShareUsageDescription"] = "Idle World používá počet tvých kroků k udělení bonusu za pohyb ve skutečném světě."
 end
 
 widget_target.build_configurations.each do |config|
   config.build_settings["APPLICATION_EXTENSION_API_ONLY"] = "YES"
   config.build_settings["GENERATE_INFOPLIST_FILE"] = "NO"
   config.build_settings["INFOPLIST_FILE"] = "WidgetExtension/Info.plist"
+  config.build_settings["SKIP_INSTALL"] = "YES"
+end
+
+monitor_target.build_configurations.each do |config|
+  config.build_settings["APPLICATION_EXTENSION_API_ONLY"] = "YES"
+  config.build_settings["GENERATE_INFOPLIST_FILE"] = "NO"
+  config.build_settings["INFOPLIST_FILE"] = "ScreenTimeMonitorExtension/Info.plist"
   config.build_settings["SKIP_INSTALL"] = "YES"
 end
 
@@ -151,11 +185,26 @@ end
 healthkit_ref = project.frameworks_group.new_file("System/Library/Frameworks/HealthKit.framework")
 app_target.frameworks_build_phase.add_file_reference(healthkit_ref)
 
+screen_time_frameworks = %w[
+  FamilyControls.framework
+  DeviceActivity.framework
+]
+
+screen_time_frameworks.each do |framework|
+  ref = project.frameworks_group.new_file("System/Library/Frameworks/#{framework}")
+  app_target.frameworks_build_phase.add_file_reference(ref)
+  monitor_target.frameworks_build_phase.add_file_reference(ref)
+end
+
+managed_settings_ref = project.frameworks_group.new_file("System/Library/Frameworks/ManagedSettings.framework")
+monitor_target.frameworks_build_phase.add_file_reference(managed_settings_ref)
+
 entitlements_dir = File.join(ROOT, "Config")
 FileUtils.mkdir_p(entitlements_dir)
 
 app_entitlements = File.join(entitlements_dir, "IdleWorld.entitlements")
 widget_entitlements = File.join(entitlements_dir, "IdleWorldWidget.entitlements")
+monitor_entitlements = File.join(entitlements_dir, "IdleWorldScreenTimeMonitor.entitlements")
 
 File.write(
   app_entitlements,
@@ -164,6 +213,8 @@ File.write(
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
     <dict>
+      <key>com.apple.developer.healthkit</key>
+      <true/>
       <key>com.apple.security.application-groups</key>
       <array>
         <string>#{APP_GROUP}</string>
@@ -191,6 +242,22 @@ File.write(
   PLIST
 )
 
+File.write(
+  monitor_entitlements,
+  <<~PLIST
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+      <key>com.apple.security.application-groups</key>
+      <array>
+        <string>#{APP_GROUP}</string>
+      </array>
+    </dict>
+    </plist>
+  PLIST
+)
+
 app_target.build_configurations.each do |config|
   config.build_settings["CODE_SIGN_ENTITLEMENTS"] = "Config/IdleWorld.entitlements"
 end
@@ -200,13 +267,34 @@ widget_target.build_configurations.each do |config|
   config.build_settings["PRODUCT_NAME"] = "$(TARGET_NAME)"
 end
 
+monitor_target.build_configurations.each do |config|
+  config.build_settings["CODE_SIGN_ENTITLEMENTS"] = "Config/IdleWorldScreenTimeMonitor.entitlements"
+  config.build_settings["PRODUCT_NAME"] = "$(TARGET_NAME)"
+end
+
 embed_phase = app_target.new_copy_files_build_phase("Embed App Extensions")
 embed_phase.symbol_dst_subfolder_spec = :plug_ins
 embed_phase.add_file_reference(widget_target.product_reference, true)
+embed_phase.add_file_reference(monitor_target.product_reference, true)
 
 widget_target.add_dependency(app_target) if false
 
 project.save
+
+workspace_dir = File.join(PROJECT_PATH, "project.xcworkspace")
+FileUtils.mkdir_p(workspace_dir)
+File.write(
+  File.join(workspace_dir, "contents.xcworkspacedata"),
+  <<~XML
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Workspace
+       version = "1.0">
+       <FileRef
+          location = "self:">
+       </FileRef>
+    </Workspace>
+  XML
+)
 
 scheme_dir = File.join(PROJECT_PATH, "xcshareddata", "xcschemes")
 FileUtils.mkdir_p(scheme_dir)

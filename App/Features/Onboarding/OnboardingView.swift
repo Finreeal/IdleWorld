@@ -11,7 +11,7 @@ struct OnboardingView: View {
             TabView(selection: $page) {
                 OnboardingPage(
                     title: "Váš hrdina čeká na skutečný svět",
-                    subtitle: "Když bezcílně scrolluješ, tábor stojí. Když telefon odložíš, svět konečně pracuje.",
+                    subtitle: "Když bezcílně scrolluješ, tábor stojí. Když iPhone zamkneš nebo spustíš soustředění, svět konečně pracuje.",
                     artwork: .sleepyHero
                 )
                 .tag(0)
@@ -66,6 +66,11 @@ struct OnboardingView: View {
                     Text("Tip: podrž plochu iPhonu, klepni na + a vyber Idle World.")
                         .font(.footnote)
                         .foregroundStyle(AppTheme.mutedText)
+                        .multilineTextAlignment(.center)
+
+                    Text("Pasivní sběr se spustí hlavně tehdy, když iPhone opravdu zamkneš.")
+                        .font(.footnote)
+                        .foregroundStyle(AppTheme.mutedText.opacity(0.92))
                         .multilineTextAlignment(.center)
 
                     Spacer()
@@ -331,7 +336,7 @@ private struct WidgetPlaceholderCard: View {
                     .font(.headline)
                     .foregroundStyle(.white)
 
-                Text("Po prvním spuštění si sem přidáš Idle World a uvidíš tábor růst bez otevírání appky.")
+                Text("Po prvním spuštění si sem přidáš Idle World a uvidíš tábor růst, když iPhone zamkneš nebo spustíš soustředění.")
                     .font(.footnote)
                     .foregroundStyle(AppTheme.mutedText)
                     .multilineTextAlignment(.center)

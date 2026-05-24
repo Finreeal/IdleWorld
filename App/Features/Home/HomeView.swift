@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(FamilyControls)
+import FamilyControls
+#endif
 
 struct HomeView: View {
     @EnvironmentObject private var gameStore: GameStore
@@ -57,7 +60,7 @@ struct HomeView: View {
 
                 Text(focusManager.activeSession == nil
                      ? "Tvůj mikrosvět roste, když dáš prostor skutečnému životu."
-                     : "Deep Focus běží. Telefon může chvíli zmizet ze světa.")
+                     : "Soustředění běží. Zamkni iPhone a nech svět chvíli růst.")
                     .font(.callout)
                     .foregroundStyle(AppTheme.mutedText)
             }
@@ -67,13 +70,12 @@ struct HomeView: View {
                 decorationCount: gameStore.state.unlockedDecorations.count,
                 totalFocusedHours: gameStore.totalFocusedHours,
                 deepFocusSummary: gameStore.deepFocusSummary,
-                isWorking: focusManager.isSessionRunning,
-                theme: gameStore.activeTheme
+                isWorking: focusManager.isSessionRunning
             )
 
             HStack(spacing: 14) {
-                ResourceCard(title: "Zlato", value: gameStore.state.gold, symbol: "circle.hexagongrid.fill", tint: AppTheme.gold)
-                ResourceCard(title: "Dřevo", value: gameStore.state.wood, symbol: "leaf.fill", tint: AppTheme.wood)
+                ResourceCard(title: "Zlato", value: gameStore.state.gold, tint: AppTheme.gold)
+                ResourceCard(title: "Dřevo", value: gameStore.state.wood, tint: AppTheme.wood)
             }
 
             CampStatusCard(
@@ -92,21 +94,20 @@ private struct DashboardHeroCard: View {
     let totalFocusedHours: String
     let deepFocusSummary: String
     let isWorking: Bool
-    let theme: WorldTheme
 
     var body: some View {
         VStack(spacing: 14) {
-            CampArtwork(level: level, decorationCount: decorationCount, isWorking: isWorking, theme: theme)
+            CampLottiePanel(isWorking: isWorking)
                 .frame(height: 164)
 
             HStack(spacing: 10) {
-                HeroMetric(title: "Úroveň", value: "\(level)", symbol: "trophy.fill", tint: AppTheme.gold)
-                HeroMetric(title: "Dekorace", value: "\(decorationCount)", symbol: "tree.fill", tint: AppTheme.mint)
-                HeroMetric(title: "Focus", value: totalFocusedHours, symbol: "sparkles", tint: .white)
+                HeroMetric(title: "Úroveň", value: "\(level)", tint: AppTheme.gold)
+                HeroMetric(title: "Dekorace", value: "\(decorationCount)", tint: AppTheme.mint)
+                HeroMetric(title: "Čas", value: totalFocusedHours, tint: .white)
             }
 
             HStack {
-                Text("Deep Focus")
+                Text("Soustředěné bloky")
                     .font(.caption.weight(.bold))
                     .foregroundStyle(AppTheme.gold)
 
@@ -135,7 +136,7 @@ private enum HomeTab: String, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .overview: return "Přehled"
-        case .focus: return "Deep Focus"
+        case .focus: return "Soustředění"
         case .studio: return "Studio"
         case .shop: return "Obchod"
         }
@@ -156,14 +157,11 @@ private struct OverviewTab: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            HintCard(
-                title: "Jak Fáze 2 funguje",
-                text: "Kromě pasivního progresu teď můžeš spustit i Deep Focus. Ten aktivuje Live Activity a dá vyšší odměnu za cílený blok soustředění."
-            )
+            OverviewSnapshotCard()
 
             HintCard(
-                title: "Widget tip",
-                text: "Po každém návratu se widget obnoví. Během Deep Focus se progres zobrazuje i na zamčené obrazovce a v Dynamic Island."
+                title: "Jak svět pracuje",
+                text: "Tábor sbírá suroviny, když iPhone opravdu zamkneš. Pro jistější a rychlejší výdělek můžeš kdykoli spustit soustředěný blok."
             )
 
             if !gameStore.state.unlockedDecorations.isEmpty {
@@ -172,6 +170,55 @@ private struct OverviewTab: View {
 
             SessionHistoryCard(sessions: gameStore.recentSessions)
         }
+    }
+}
+
+private struct OverviewSnapshotCard: View {
+    @EnvironmentObject private var gameStore: GameStore
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("Dnešní přehled")
+                .font(.headline)
+                .foregroundStyle(.white)
+
+            HStack(spacing: 12) {
+                OverviewBadge(title: "Produkce", value: gameStore.productionSummary)
+                OverviewBadge(title: "Téma", value: gameStore.activeTheme.title)
+            }
+
+            HStack(spacing: 12) {
+                OverviewBadge(title: "Bonus za pohyb", value: String(format: "%.2fx", gameStore.state.healthBonusMultiplier))
+                OverviewBadge(title: "Vylepšení", value: "\(gameStore.state.ownedUpgradeIDs.count)")
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .background(AppTheme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+}
+
+private struct OverviewBadge: View {
+    let title: String
+    let value: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(title)
+                .font(.caption.weight(.bold))
+                .foregroundStyle(AppTheme.mutedText)
+
+            Text(value)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.white)
+                .lineLimit(2)
+                .minimumScaleFactor(0.85)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(12)
+        .background(AppTheme.card)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 
@@ -194,7 +241,7 @@ private struct FocusTab: View {
                 } label: {
                     HStack {
                         Image(systemName: "sparkles")
-                        Text("Spustit \(selectedPreset.title) Focus")
+                        Text(selectedPreset.actionTitle)
                     }
                     .font(.headline)
                     .foregroundStyle(.black)
@@ -211,18 +258,18 @@ private struct FocusTab: View {
 private struct FocusHeroCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Deep Focus")
+            Text("Soustředění")
                 .font(.title2.weight(.bold))
                 .foregroundStyle(.white)
 
-            Text("Vybereš délku bloku, zavřeš telefon a na zamčené obrazovce běží Live Activity s reálným časem i produkcí tábora.")
+            Text("Vybereš délku bloku, zamkneš iPhone a necháš tábor chvíli pracovat bez vyrušení. Odměna je vyšší než u pasivního sběru.")
                 .font(.callout)
                 .foregroundStyle(AppTheme.mutedText)
 
             HStack(spacing: 10) {
                 FocusBadge(text: "Live Activity")
-                FocusBadge(text: "Dynamic Island")
-                FocusBadge(text: "Bonus odměna")
+                FocusBadge(text: "Zamčená obrazovka")
+                FocusBadge(text: "Vyšší odměna")
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -237,13 +284,14 @@ private struct PresetPickerCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("Vyber blok")
+            Text("Vyber režim")
                 .font(.headline)
                 .foregroundStyle(.white)
 
             ForEach(FocusSessionPreset.allCases) { preset in
                 Button {
                     selectedPreset = preset
+                    Haptics.playSelection()
                 } label: {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
@@ -294,15 +342,10 @@ private struct ActiveFocusCard: View {
 
                 Spacer()
 
-                FocusBadge(text: "Bezi")
+                FocusBadge(text: "Běží")
             }
 
-            CampArtwork(
-                level: session.campLevelAtStart,
-                decorationCount: session.decorationCountAtStart,
-                isWorking: true,
-                theme: session.themeAtStart
-            )
+            CampLottiePanel(isWorking: true)
             .frame(height: 156)
 
             VStack(alignment: .leading, spacing: 8) {
@@ -314,7 +357,7 @@ private struct ActiveFocusCard: View {
                     .font(.system(size: 34, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
 
-                Text("Produkce: \(Int(session.goldRateAtStart * session.rewardMultiplier)) zlata/min • \(Int(session.woodRateAtStart * session.rewardMultiplier)) dřeva/min")
+                Text("Zisk: \(Int(session.goldRateAtStart * session.rewardMultiplier)) zlata/min • \(Int(session.woodRateAtStart * session.rewardMultiplier)) dřeva/min")
                     .font(.footnote)
                     .foregroundStyle(AppTheme.gold)
             }
@@ -349,8 +392,92 @@ private struct StudioTab: View {
             HealthBonusCard()
             DataSettingsCard()
             PostcardCard(postcardURL: $postcardURL)
-            WatchPreviewCard()
         }
+    }
+}
+
+private struct ScreenTimeSetupCard: View {
+    @EnvironmentObject private var screenTimeService: ScreenTimeService
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Screen Time experiment")
+                .font(.headline)
+                .foregroundStyle(.white)
+
+            Text("Tahle vrstva připravuje přesnější variantu Idle World přes Family Controls a Device Activity. Apple pro ni vyžaduje speciální capability a schválený entitlement.")
+                .font(.callout)
+                .foregroundStyle(AppTheme.mutedText)
+
+            Text(screenTimeService.authorizationStatusText)
+                .font(.footnote)
+                .foregroundStyle(AppTheme.mutedText)
+
+            Text("Výběr: \(screenTimeService.selectionSummaryText)")
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(.white.opacity(0.88))
+
+            HStack {
+                Button("Požádat o oprávnění") {
+                    screenTimeService.requestAuthorization()
+                    Haptics.playSelection()
+                }
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.black)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .background(AppTheme.gold)
+                .clipShape(Capsule())
+
+                Button("Vybrat rušivé appky") {
+                    screenTimeService.isPickerPresented = true
+                    Haptics.playSelection()
+                }
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(AppTheme.mint)
+                .disabled(!screenTimeService.isFeatureAvailable)
+            }
+
+            HStack {
+                Button("Připravit monitoring") {
+                    screenTimeService.prepareMonitoringSchedule()
+                    Haptics.playImpact(style: .light)
+                }
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .background(AppTheme.surface)
+                .clipShape(Capsule())
+
+                Button("Zrušit oprávnění") {
+                    screenTimeService.revokeAuthorization()
+                    Haptics.playWarning()
+                }
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.red.opacity(0.92))
+            }
+
+            Text(screenTimeService.monitoringStatusText)
+                .font(.caption)
+                .foregroundStyle(AppTheme.mutedText)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(18)
+        .background(AppTheme.card)
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+#if canImport(FamilyControls)
+        .familyActivityPicker(
+            headerText: "Vyber aplikace, weby nebo kategorie, které chceš v budoucnu sledovat jako rušivé.",
+            footerText: "Idle World si tenhle výběr uloží jako základ pro přesnější Screen Time režim.",
+            isPresented: $screenTimeService.isPickerPresented,
+            selection: $screenTimeService.selection
+        )
+        .onChange(of: screenTimeService.selection) { _, _ in
+            screenTimeService.persistSelection()
+        }
+#endif
     }
 }
 
@@ -362,6 +489,10 @@ private struct ThemeStudioCard: View {
             Text("Témata")
                 .font(.headline)
                 .foregroundStyle(.white)
+
+            Text("Každé téma mění náladu tábora i widgetu. Přepnout můžeš kdykoli bez ztráty pokroku.")
+                .font(.callout)
+                .foregroundStyle(AppTheme.mutedText)
 
             ForEach(WorldTheme.allCases) { theme in
                 HStack(spacing: 12) {
@@ -388,12 +519,14 @@ private struct ThemeStudioCard: View {
                     if gameStore.state.unlockedThemes.contains(theme) {
                         Button(gameStore.activeTheme == theme ? "Aktivní" : "Použít") {
                             gameStore.equipTheme(theme)
+                            Haptics.playSelection()
                         }
                         .font(.caption.weight(.bold))
                         .foregroundStyle(gameStore.activeTheme == theme ? AppTheme.mint : AppTheme.gold)
                     } else {
-                        Button("Odemknout za \(theme.unlockCost)") {
+                        Button("Odemknout za \(theme.unlockCost) zlata") {
                             gameStore.unlockTheme(theme)
+                            Haptics.playImpact(style: .soft)
                         }
                         .font(.caption.weight(.bold))
                         .foregroundStyle(AppTheme.gold)
@@ -417,17 +550,22 @@ private struct HealthBonusCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Health bonus")
+            Text("Bonus za pohyb")
                 .font(.headline)
                 .foregroundStyle(.white)
+
+            Text("Když povolíš přístup ke krokům, Idle World přidá malý bonus za reálný pohyb během dne.")
+                .font(.callout)
+                .foregroundStyle(AppTheme.mutedText)
 
             Text("Dnes: \(gameStore.state.todaySteps) kroků • bonus \(String(format: "%.2fx", gameStore.state.healthBonusMultiplier))")
                 .font(.callout)
                 .foregroundStyle(AppTheme.mutedText)
 
             HStack {
-                Button("Připojit Health") {
+                Button("Připojit Zdraví") {
                     healthBonusService.requestAccess()
+                    Haptics.playSelection()
                 }
                 .font(.subheadline.weight(.bold))
                 .foregroundStyle(.black)
@@ -435,12 +573,15 @@ private struct HealthBonusCard: View {
                 .padding(.vertical, 10)
                 .background(AppTheme.gold)
                 .clipShape(Capsule())
+                .disabled(!healthBonusService.isAvailable)
 
-                Button("Obnovit") {
+                Button("Načíst kroky") {
                     healthBonusService.refreshTodaySteps()
+                    Haptics.playSelection()
                 }
                 .font(.subheadline.weight(.bold))
                 .foregroundStyle(AppTheme.mint)
+                .disabled(!healthBonusService.isAvailable)
             }
 
             Text("Stav: \(healthBonusService.authorizationStatus)")
@@ -536,6 +677,7 @@ private struct PostcardCard: View {
             HStack {
                 Button("Vygenerovat") {
                     postcardURL = PostcardRenderer.render(theme: gameStore.activeTheme, state: gameStore.state)
+                    Haptics.playImpact(style: .light)
                 }
                 .font(.subheadline.weight(.bold))
                 .foregroundStyle(.black)
@@ -567,7 +709,7 @@ private struct WatchPreviewCard: View {
                 .font(.headline)
                 .foregroundStyle(.white)
 
-            Text("Datová vrstva je připravená pro komplikace a doprovodné watch pohledy. Další iterace může přidat samostatný watch target bez přestavby logiky appky.")
+            Text("Datová vrstva je připravená pro komplikace a doprovodné watch pohledy. Další iterace může přidat samostatný Apple Watch target bez přestavby logiky aplikace.")
                 .font(.callout)
                 .foregroundStyle(AppTheme.mutedText)
 
@@ -600,14 +742,11 @@ private struct FocusBadge: View {
 private struct HeroMetric: View {
     let title: String
     let value: String
-    let symbol: String
     let tint: Color
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Image(systemName: symbol)
-                .font(.caption.weight(.bold))
-                .foregroundStyle(tint)
+            metricIcon
 
             Text(value)
                 .font(.system(.headline, design: .rounded, weight: .bold))
@@ -623,12 +762,29 @@ private struct HeroMetric: View {
         .background(AppTheme.surface.opacity(0.95))
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
+
+    @ViewBuilder
+    private var metricIcon: some View {
+        switch title {
+        case "Úroveň":
+            Image(systemName: "trophy.fill")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(tint)
+        case "Dekorace":
+            Image(systemName: "tree.fill")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(tint)
+        default:
+            Image(systemName: "hourglass")
+                .font(.caption.weight(.bold))
+                .foregroundStyle(tint)
+        }
+    }
 }
 
 private struct ResourceCard: View {
     let title: String
     let value: Int
-    let symbol: String
     let tint: Color
 
     var body: some View {
@@ -646,6 +802,10 @@ private struct ResourceCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
         .background(AppTheme.card)
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(tint.opacity(0.16), lineWidth: 1)
+        )
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 
@@ -660,6 +820,7 @@ private struct ResourceCard: View {
 }
 
 private struct CampStatusCard: View {
+    @EnvironmentObject private var gameStore: GameStore
     let level: Int
     let lastSession: String
     let totalFocusedHours: String
@@ -691,6 +852,11 @@ private struct CampStatusCard: View {
             Text("Celkem soustředěného času: \(totalFocusedHours)")
                 .font(.footnote)
                 .foregroundStyle(AppTheme.mutedText)
+
+            Text(gameStore.passiveGenerationStatusText)
+                .font(.footnote)
+                .foregroundStyle(AppTheme.mutedText.opacity(0.92))
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
@@ -736,26 +902,24 @@ private struct BottomTabBar: View {
 
 private struct CoinPileIcon: View {
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        ZStack {
             Circle()
-                .fill(AppTheme.gold.opacity(0.12))
+                .fill(
+                    RadialGradient(
+                        colors: [AppTheme.gold.opacity(0.22), Color.clear],
+                        center: .center,
+                        startRadius: 2,
+                        endRadius: 21
+                    )
+                )
                 .frame(width: 42, height: 42)
 
-            ForEach(0..<4, id: \.self) { index in
-                Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [Color(red: 1.0, green: 0.88, blue: 0.44), AppTheme.gold],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: 16, height: 16)
-                    .overlay(
-                        Circle()
-                            .stroke(Color.white.opacity(0.22), lineWidth: 1)
-                    )
-                    .offset(x: CGFloat(index * 7), y: CGFloat(-(index % 2) * 4))
+            ZStack(alignment: .bottomLeading) {
+                CoinDisc(size: 16).offset(x: -8, y: 8)
+                CoinDisc(size: 18).offset(x: 2, y: 7)
+                CoinDisc(size: 16).offset(x: 11, y: 8)
+                CoinDisc(size: 18).offset(x: -3, y: -1)
+                CoinDisc(size: 20).offset(x: 7, y: -2)
             }
         }
         .frame(width: 42, height: 42)
@@ -766,27 +930,77 @@ private struct LogPileIcon: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(AppTheme.wood.opacity(0.12))
+                .fill(
+                    RadialGradient(
+                        colors: [AppTheme.wood.opacity(0.18), Color.clear],
+                        center: .center,
+                        startRadius: 2,
+                        endRadius: 22
+                    )
+                )
                 .frame(width: 42, height: 42)
 
-            VStack(spacing: 4) {
-                log(width: 24)
-                log(width: 18)
+            VStack(alignment: .leading, spacing: 3) {
+                log(width: 24, offset: 0)
+                log(width: 20, offset: 4)
+                log(width: 16, offset: 2)
             }
         }
         .frame(width: 42, height: 42)
     }
 
-    private func log(width: CGFloat) -> some View {
+    private func log(width: CGFloat, offset: CGFloat) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 6, style: .continuous)
-                .fill(AppTheme.wood)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 0.78, green: 0.58, blue: 0.34),
+                            AppTheme.wood,
+                            Color(red: 0.33, green: 0.20, blue: 0.12)
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
                 .frame(width: width, height: 8)
+                .shadow(color: Color.black.opacity(0.16), radius: 2, y: 1)
             Circle()
                 .fill(Color(red: 0.71, green: 0.52, blue: 0.32))
                 .frame(width: 6, height: 6)
                 .offset(x: width / 2 - 5)
         }
+        .offset(x: offset)
+    }
+}
+
+private struct CoinDisc: View {
+    let size: CGFloat
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 1.0, green: 0.95, blue: 0.68),
+                            AppTheme.gold,
+                            Color(red: 0.76, green: 0.54, blue: 0.16)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+
+            Circle()
+                .stroke(Color.white.opacity(0.28), lineWidth: 1)
+
+            Circle()
+                .stroke(Color.black.opacity(0.12), lineWidth: 1)
+                .padding(3)
+        }
+        .frame(width: size, height: size)
+        .shadow(color: AppTheme.gold.opacity(0.18), radius: 3, y: 2)
     }
 }
 
@@ -816,12 +1030,12 @@ private struct SessionHistoryCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Poslední sessiony")
+            Text("Poslední bloky")
                 .font(.headline)
                 .foregroundStyle(.white)
 
             if sessions.isEmpty {
-                Text("Jakmile se vrátíš po chvíli mimo telefon nebo dokončíš Deep Focus, objeví se tu historie zisků.")
+                Text("Jakmile se vrátíš po chvíli mimo telefon nebo dokončíš soustředěný blok, objeví se tu historie zisků.")
                     .font(.callout)
                     .foregroundStyle(AppTheme.mutedText)
             } else {
@@ -832,7 +1046,7 @@ private struct SessionHistoryCard: View {
                                 .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(.white)
 
-                            Text("\(Int(session.duration / 60)) min • \(session.kind == .deepFocus ? "Deep Focus" : "Pasivní běh")")
+                            Text("\(Int(session.duration / 60)) min • \(session.kind == .deepFocus ? "Soustředění" : "Pasivní sběr")")
                                 .font(.caption)
                                 .foregroundStyle(AppTheme.mutedText)
                         }

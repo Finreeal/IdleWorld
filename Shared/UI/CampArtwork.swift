@@ -1,81 +1,123 @@
 import SwiftUI
 
+struct CampVisualState: Equatable {
+    var showsCampfire: Bool
+    var showsWoodPile: Bool
+    var showsSecondTent: Bool
+    var showsWell: Bool
+    var showsStump: Bool
+    var showsPickaxe: Bool
+    var showsAxe: Bool
+    var showsStoneCache: Bool
+    var treeCount: Int
+
+    static func derived(level: Int, decorationCount: Int) -> CampVisualState {
+        CampVisualState(
+            showsCampfire: decorationCount >= 1,
+            showsWoodPile: decorationCount >= 1,
+            showsSecondTent: level >= 2 || decorationCount >= 2,
+            showsWell: level >= 3 || decorationCount >= 3,
+            showsStump: true,
+            showsPickaxe: false,
+            showsAxe: false,
+            showsStoneCache: level >= 3,
+            treeCount: max(3, min(6, level + 2))
+        )
+    }
+
+    static func from(state: GameState) -> CampVisualState {
+        CampVisualState(
+            showsCampfire: state.ownedUpgradeIDs.contains("campfire_hearth") || state.unlockedDecorations.contains("Ohniště"),
+            showsWoodPile: state.ownedUpgradeIDs.contains("campfire_hearth") || state.unlockedDecorations.contains("Ohniště"),
+            showsSecondTent: state.ownedUpgradeIDs.contains("second_tent") || state.unlockedDecorations.contains("Druhý stan"),
+            showsWell: state.ownedUpgradeIDs.contains("stone_well") || state.unlockedDecorations.contains("Studna"),
+            showsStump: true,
+            showsPickaxe: state.ownedUpgradeIDs.contains("iron_pickaxe"),
+            showsAxe: state.ownedUpgradeIDs.contains("hardened_axe"),
+            showsStoneCache: state.campLevel >= 3 || state.ownedUpgradeIDs.contains("stone_well"),
+            treeCount: max(3, min(6, state.campLevel + 2))
+        )
+    }
+}
+
 struct CampArtwork: View {
     let level: Int
     let decorationCount: Int
     let isWorking: Bool
     var theme: WorldTheme = .medievalCamp
+    var visualState: CampVisualState? = nil
+
+    private var resolvedVisualState: CampVisualState {
+        visualState ?? .derived(level: level, decorationCount: decorationCount)
+    }
 
     var body: some View {
-        GeometryReader { proxy in
-            let size = proxy.size
+        TimelineView(.periodic(from: .now, by: 0.65)) { timeline in
+            let t = timeline.date.timeIntervalSinceReferenceDate
+            let glowPulse = 0.92 + (sin(t * 2.1) * 0.08)
+            let firePulse = 0.94 + (sin(t * 7.2) * 0.06)
+            let windShift = sin(t * 1.35) * 1.8
 
-            ZStack {
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [theme.skyTop, theme.skyBottom, theme.grass.opacity(0.6)],
-                            startPoint: .top,
-                            endPoint: .bottom
+            GeometryReader { proxy in
+                let size = proxy.size
+
+                ZStack {
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    theme.skyTop,
+                                    theme.skyBottom,
+                                    Color.black.opacity(0.34)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
                         )
-                    )
 
-                SkyDetails(theme: theme)
+                    SkyLayer(theme: theme, glowPulse: glowPulse)
 
-                VStack(spacing: 0) {
-                    Spacer()
+                    VStack(spacing: 0) {
+                        Spacer(minLength: size.height * 0.18)
 
-                    ZStack(alignment: .bottom) {
-                        Hills(theme: theme)
+                        ZStack(alignment: .bottom) {
+                            BackRidges(theme: theme)
+                                .frame(width: size.width * 0.92, height: size.height * 0.30)
+                                .offset(y: size.height * 0.02)
 
-                        GroundPlate(theme: theme)
-                            .frame(height: size.height * 0.42)
+                            IsometricIsland(theme: theme)
+                                .frame(width: size.width * 0.84, height: size.height * 0.50)
+                                .offset(y: size.height * 0.04)
 
-                        CampPath()
-                            .fill(Color.white.opacity(0.12))
-                            .frame(width: size.width * 0.34, height: size.height * 0.24)
-                            .offset(x: size.width * 0.04, y: size.height * 0.03)
-
-                        HStack(alignment: .bottom, spacing: size.width * 0.06) {
-                            TreeCluster(theme: theme)
-
-                            Settlement(level: level, theme: theme)
-
-                            if decorationCount > 0 {
-                                Campfire(isWorking: isWorking, theme: theme)
-                            }
-
-                            if decorationCount > 1 {
-                                SupplyCrates()
-                            }
-
-                            Spacer(minLength: 0)
+                            CampScene(
+                                level: level,
+                                isWorking: isWorking,
+                                theme: theme,
+                                visualState: resolvedVisualState,
+                                firePulse: firePulse,
+                                glowPulse: glowPulse,
+                                windShift: windShift
+                            )
+                            .frame(width: size.width * 0.84, height: size.height * 0.50)
+                                .offset(y: size.height * 0.01)
                         }
-                        .padding(.horizontal, size.width * 0.09)
-                        .padding(.bottom, size.height * 0.075)
 
-                        GrassTufts(theme: theme)
-                            .padding(.horizontal, size.width * 0.06)
-                            .padding(.bottom, size.height * 0.04)
+                        Spacer(minLength: 0)
                     }
-                }
-
-                if isWorking {
-                    WorkingGlow(theme: theme)
-                        .offset(x: -size.width * 0.01, y: size.height * 0.11)
                 }
             }
             .overlay(
-                RoundedRectangle(cornerRadius: 28, style: .continuous)
+                RoundedRectangle(cornerRadius: 30, style: .continuous)
                     .stroke(Color.white.opacity(0.08), lineWidth: 1)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         }
     }
 }
 
-private struct SkyDetails: View {
+private struct SkyLayer: View {
     let theme: WorldTheme
+    let glowPulse: Double
 
     var body: some View {
         GeometryReader { proxy in
@@ -85,34 +127,36 @@ private struct SkyDetails: View {
                 Circle()
                     .fill(
                         RadialGradient(
-                            colors: [theme.accent.opacity(0.95), theme.accent.opacity(0.04)],
+                            colors: [theme.accent.opacity(0.30), .clear],
                             center: .center,
-                            startRadius: 8,
-                            endRadius: size.width * 0.18
+                            startRadius: 2,
+                            endRadius: size.width * 0.20
                         )
                     )
-                    .frame(width: size.width * 0.22, height: size.width * 0.22)
-                    .blur(radius: 4)
-                    .offset(x: size.width * 0.27, y: -size.height * 0.19)
+                    .frame(width: size.width * 0.34, height: size.width * 0.34)
+                    .scaleEffect(glowPulse)
+                    .offset(x: size.width * 0.20, y: -size.height * 0.17)
 
                 Circle()
                     .fill(
                         LinearGradient(
-                            colors: [theme.accent, Color.white.opacity(0.92)],
+                            colors: [Color.white.opacity(0.94), theme.accent.opacity(0.84)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
                     .frame(width: size.width * 0.11, height: size.width * 0.11)
-                    .offset(x: size.width * 0.27, y: -size.height * 0.19)
+                    .shadow(color: theme.accent.opacity(0.22), radius: 20, y: 8)
+                    .scaleEffect(glowPulse)
+                    .offset(x: size.width * 0.20, y: -size.height * 0.17)
 
-                ForEach(0..<11, id: \.self) { index in
+                ForEach(0..<6, id: \.self) { index in
                     Capsule()
-                        .fill(Color.white.opacity(index.isMultiple(of: 2) ? 0.18 : 0.10))
-                        .frame(width: CGFloat(18 + index * 4), height: 2)
+                        .fill(Color.white.opacity(index.isMultiple(of: 2) ? 0.10 : 0.06))
+                        .frame(width: CGFloat(30 + index * 7), height: 2)
                         .offset(
-                            x: CGFloat((index * 23) % 120) - size.width * 0.2,
-                            y: CGFloat((index * 17) % 48) - size.height * 0.32
+                            x: CGFloat((index * 33) - 72),
+                            y: CGFloat((index % 3) * 16) - size.height * 0.30
                         )
                 }
             }
@@ -120,7 +164,67 @@ private struct SkyDetails: View {
     }
 }
 
-private struct Hills: View {
+private struct BackRidges: View {
+    let theme: WorldTheme
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            RidgeShape(leftHeight: 0.55, centerHeight: 0.22, rightHeight: 0.48)
+                .fill(theme.plateauTop.opacity(0.25))
+
+            RidgeShape(leftHeight: 0.42, centerHeight: 0.12, rightHeight: 0.34)
+                .fill(theme.plateauTop.opacity(0.42))
+                .offset(y: 14)
+        }
+    }
+}
+
+private struct IsometricIsland: View {
+    let theme: WorldTheme
+
+    var body: some View {
+        ZStack {
+            IslandSide(side: .left, theme: theme)
+            IslandSide(side: .right, theme: theme)
+
+            Diamond()
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            theme.plateauTop,
+                            theme.plateauTop.opacity(0.98),
+                            theme.plateauSide
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .overlay(
+                    Diamond()
+                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                )
+                .shadow(color: .black.opacity(0.30), radius: 18, y: 12)
+
+            GroundTexture(theme: theme)
+                .padding(18)
+                .mask(Diamond())
+
+            Diamond()
+                .stroke(Color.black.opacity(0.18), lineWidth: 10)
+                .blur(radius: 12)
+                .offset(y: 20)
+                .padding(.horizontal, 26)
+        }
+    }
+}
+
+private struct IslandSide: View {
+    enum Side {
+        case left
+        case right
+    }
+
+    let side: Side
     let theme: WorldTheme
 
     var body: some View {
@@ -128,284 +232,523 @@ private struct Hills: View {
             let width = proxy.size.width
             let height = proxy.size.height
 
-            ZStack(alignment: .bottom) {
-                HillShape(curveHeight: 0.26, peakOffset: 0.18)
-                    .fill(theme.grass.opacity(0.48))
-                    .frame(width: width, height: height)
-
-                HillShape(curveHeight: 0.20, peakOffset: -0.18)
-                    .fill(theme.grass.opacity(0.68))
-                    .frame(width: width, height: height * 0.88)
-            }
-        }
-    }
-}
-
-private struct GroundPlate: View {
-    let theme: WorldTheme
-
-    var body: some View {
-        ZStack(alignment: .top) {
-            RoundedRectangle(cornerRadius: 42, style: .continuous)
-                .fill(
-                    LinearGradient(
-                        colors: [theme.grass.opacity(0.95), AppTheme.grassShadow.opacity(0.92)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-
-            RoundedRectangle(cornerRadius: 42, style: .continuous)
-                .stroke(Color.white.opacity(0.05), lineWidth: 1)
-
-            RoundedRectangle(cornerRadius: 42, style: .continuous)
-                .fill(Color.white.opacity(0.05))
-                .frame(height: 18)
-                .blur(radius: 6)
-                .padding(.horizontal, 18)
-                .offset(y: 6)
-        }
-        .shadow(color: .black.opacity(0.24), radius: 22, y: 10)
-    }
-}
-
-private struct GrassTufts: View {
-    let theme: WorldTheme
-
-    var body: some View {
-        HStack(spacing: 10) {
-            ForEach(0..<8, id: \.self) { index in
-                VStack(spacing: 2) {
-                    Capsule()
-                        .fill(index.isMultiple(of: 2) ? theme.grass.opacity(0.9) : AppTheme.mint.opacity(0.65))
-                        .frame(width: 3, height: 12)
-                        .rotationEffect(.degrees(index.isMultiple(of: 2) ? -16 : 14))
-                    Capsule()
-                        .fill(theme.grass.opacity(0.72))
-                        .frame(width: 2, height: 8)
-                }
-            }
-            Spacer()
-        }
-    }
-}
-
-private struct TreeCluster: View {
-    let theme: WorldTheme
-
-    var body: some View {
-        HStack(alignment: .bottom, spacing: 10) {
-            ForEach(0..<2, id: \.self) { index in
-                VStack(spacing: 0) {
-                    ZStack(alignment: .bottom) {
-                        Circle()
-                            .fill(Color.black.opacity(0.16))
-                            .frame(width: index == 0 ? 28 : 24, height: 8)
-                            .offset(y: 14)
-
-                        Triangle()
-                            .fill(index == 0 ? theme.grass : AppTheme.mint.opacity(0.92))
-                            .frame(width: index == 0 ? 34 : 28, height: index == 0 ? 34 : 28)
-                            .shadow(color: .black.opacity(0.18), radius: 8, y: 5)
-
-                        Triangle()
-                            .fill(Color.white.opacity(0.10))
-                            .frame(width: index == 0 ? 16 : 14, height: index == 0 ? 18 : 15)
-                            .offset(x: -4, y: -5)
-                    }
-
-                    RoundedRectangle(cornerRadius: 2, style: .continuous)
-                        .fill(AppTheme.wood)
-                        .frame(width: 5, height: 12)
-                }
-            }
-        }
-    }
-}
-
-private struct Settlement: View {
-    let level: Int
-    let theme: WorldTheme
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 3) {
-            ZStack(alignment: .bottom) {
-                Capsule()
-                    .fill(Color.black.opacity(0.18))
-                    .frame(width: level > 1 ? 54 : 44, height: 10)
-                    .offset(y: 12)
-
-                if level > 1 {
-                    AdvancedTent(theme: theme)
+            Path { path in
+                if side == .left {
+                    path.move(to: CGPoint(x: width * 0.50, y: height * 0.50))
+                    path.addLine(to: CGPoint(x: width * 0.24, y: height * 0.76))
+                    path.addLine(to: CGPoint(x: width * 0.24, y: height * 0.92))
+                    path.addLine(to: CGPoint(x: width * 0.50, y: height * 0.66))
                 } else {
-                    BaseTent(theme: theme)
+                    path.move(to: CGPoint(x: width * 0.50, y: height * 0.50))
+                    path.addLine(to: CGPoint(x: width * 0.76, y: height * 0.76))
+                    path.addLine(to: CGPoint(x: width * 0.76, y: height * 0.92))
+                    path.addLine(to: CGPoint(x: width * 0.50, y: height * 0.66))
+                }
+                path.closeSubpath()
+            }
+            .fill(
+                LinearGradient(
+                    colors: [theme.plateauSide, theme.plateauSide.opacity(0.86)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+        }
+    }
+}
+
+private struct GroundTexture: View {
+    let theme: WorldTheme
+
+    var body: some View {
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            let height = proxy.size.height
+
+            ZStack {
+                PathRibbon()
+                    .fill(theme.stoneTint.opacity(0.24))
+                    .frame(width: width * 0.26, height: height * 0.16)
+                    .offset(x: width * 0.08, y: height * 0.12)
+
+                ForEach(0..<14, id: \.self) { index in
+                    Capsule()
+                        .fill(index.isMultiple(of: 3) ? theme.foliageSecondary.opacity(0.24) : Color.white.opacity(0.06))
+                        .frame(width: 5, height: CGFloat(8 + (index % 4) * 2))
+                        .rotationEffect(.degrees(index.isMultiple(of: 2) ? -16 : 14))
+                        .offset(
+                            x: CGFloat((index * 29) % 100) / 100 * width - width / 2,
+                            y: CGFloat((index * 17) % 52) / 52 * height - height / 2
+                        )
+                }
+
+                ForEach(0..<7, id: \.self) { index in
+                    RoundedRectangle(cornerRadius: 3, style: .continuous)
+                        .fill(theme.stoneTint.opacity(0.24))
+                        .frame(width: CGFloat(7 + index % 2), height: CGFloat(4 + index % 2))
+                        .offset(
+                            x: CGFloat((index * 37) % 100) / 100 * width - width / 2,
+                            y: CGFloat((index * 23) % 62) / 62 * height - height / 2
+                        )
                 }
             }
-
-            Rectangle()
-                .fill(AppTheme.grassShadow.opacity(0.72))
-                .frame(width: level > 1 ? 54 : 42, height: 4)
-                .blur(radius: 1.6)
         }
     }
 }
 
-private struct BaseTent: View {
-    let theme: WorldTheme
-
-    var body: some View {
-        ZStack(alignment: .bottom) {
-            Triangle()
-                .fill(
-                    LinearGradient(
-                        colors: [Color(red: 0.91, green: 0.80, blue: 0.60), Color(red: 0.69, green: 0.55, blue: 0.34)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .frame(width: 42, height: 30)
-                .shadow(color: .black.opacity(0.18), radius: 8, y: 5)
-
-            Triangle()
-                .fill(Color.white.opacity(0.16))
-                .frame(width: 18, height: 14)
-                .offset(x: -6, y: -7)
-
-            RoundedRectangle(cornerRadius: 2, style: .continuous)
-                .fill(AppTheme.wood.opacity(0.82))
-                .frame(width: 4, height: 12)
-                .offset(y: 4)
-        }
-    }
-}
-
-private struct AdvancedTent: View {
-    let theme: WorldTheme
-
-    var body: some View {
-        ZStack(alignment: .bottom) {
-            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .fill(
-                    LinearGradient(
-                        colors: [Color(red: 0.79, green: 0.66, blue: 0.47), Color(red: 0.58, green: 0.44, blue: 0.28)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(width: 44, height: 26)
-                .shadow(color: .black.opacity(0.16), radius: 8, y: 5)
-
-            Triangle()
-                .fill(
-                    LinearGradient(
-                        colors: [AppTheme.wood.opacity(0.95), Color(red: 0.32, green: 0.19, blue: 0.10)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .frame(width: 52, height: 24)
-                .offset(y: -10)
-
-            RoundedRectangle(cornerRadius: 2, style: .continuous)
-                .fill(Color.black.opacity(0.12))
-                .frame(width: 12, height: 10)
-                .offset(y: 3)
-        }
-    }
-}
-
-private struct Campfire: View {
+private struct CampScene: View {
+    let level: Int
     let isWorking: Bool
     let theme: WorldTheme
+    let visualState: CampVisualState
+    let firePulse: Double
+    let glowPulse: Double
+    let windShift: Double
 
     var body: some View {
-        VStack(spacing: 2) {
+        GeometryReader { proxy in
+            let size = proxy.size
+
             ZStack {
-                Ellipse()
-                    .fill(Color.black.opacity(0.16))
-                    .frame(width: 28, height: 8)
-                    .offset(y: 12)
+                TreeGroup(theme: theme, count: visualState.treeCount, windShift: windShift)
+                    .frame(width: size.width * 0.34, height: size.height * 0.34)
+                    .offset(x: -size.width * 0.26, y: -size.height * 0.03)
 
-                Circle()
-                    .fill(theme.accent.opacity(isWorking ? 0.24 : 0.12))
-                    .frame(width: 22, height: 22)
-                    .blur(radius: isWorking ? 2 : 0)
+                if visualState.showsWoodPile {
+                    WoodStack(theme: theme)
+                        .frame(width: size.width * 0.16, height: size.height * 0.10)
+                        .offset(x: -size.width * 0.09, y: size.height * 0.10)
+                }
 
-                RoundedRectangle(cornerRadius: 2, style: .continuous)
-                    .fill(AppTheme.wood)
-                    .frame(width: 14, height: 3)
-                    .rotationEffect(.degrees(24))
+                if visualState.showsPickaxe || visualState.showsAxe {
+                    ToolRack(theme: theme, showsPickaxe: visualState.showsPickaxe, showsAxe: visualState.showsAxe)
+                        .frame(width: size.width * 0.14, height: size.height * 0.12)
+                        .offset(x: -size.width * 0.22, y: size.height * 0.11)
+                }
 
-                RoundedRectangle(cornerRadius: 2, style: .continuous)
-                    .fill(AppTheme.wood)
-                    .frame(width: 14, height: 3)
-                    .rotationEffect(.degrees(-24))
+                ExpeditionTent(style: level > 1 ? .large : .base, theme: theme)
+                    .frame(width: size.width * 0.27, height: size.height * 0.19)
+                    .offset(x: -size.width * 0.01, y: size.height * 0.00)
 
-                Triangle()
-                    .fill(isWorking ? theme.accent : AppTheme.ember)
-                    .frame(width: 12, height: 14)
+                if visualState.showsSecondTent {
+                    ExpeditionTent(style: .small, theme: theme)
+                        .frame(width: size.width * 0.18, height: size.height * 0.14)
+                        .offset(x: size.width * 0.19, y: size.height * 0.01)
+                }
 
-                Triangle()
-                    .fill(Color(red: 1.0, green: 0.84, blue: 0.46))
-                    .frame(width: 7, height: 8)
-                    .offset(y: 1)
+                if visualState.showsCampfire {
+                    FirePit(isWorking: isWorking, theme: theme, firePulse: firePulse)
+                        .frame(width: size.width * 0.13, height: size.height * 0.12)
+                        .offset(x: size.width * 0.11, y: size.height * 0.08)
+                }
+
+                if visualState.showsWell {
+                    WellNode(theme: theme)
+                        .frame(width: size.width * 0.12, height: size.height * 0.16)
+                        .offset(x: size.width * 0.24, y: -size.height * 0.01)
+                }
+
+                if visualState.showsStump {
+                    StumpNode(theme: theme)
+                        .frame(width: size.width * 0.10, height: size.height * 0.10)
+                        .offset(x: size.width * 0.28, y: size.height * 0.06)
+                }
+
+                if visualState.showsStoneCache {
+                    StoneCache(theme: theme)
+                        .frame(width: size.width * 0.14, height: size.height * 0.10)
+                        .offset(x: size.width * 0.24, y: size.height * 0.12)
+                }
+
+                if isWorking {
+                    WorkGlow(theme: theme, glowPulse: glowPulse)
+                        .offset(x: size.width * 0.09, y: -size.height * 0.13)
+                }
             }
         }
     }
 }
 
-private struct SupplyCrates: View {
-    var body: some View {
-        HStack(alignment: .bottom, spacing: 3) {
-            crate(width: 13, height: 11, tint: AppTheme.wood.opacity(0.9))
-            crate(width: 16, height: 13, tint: AppTheme.wood)
-        }
-    }
+private struct TreeGroup: View {
+    let theme: WorldTheme
+    let count: Int
+    let windShift: Double
 
-    private func crate(width: CGFloat, height: CGFloat, tint: Color) -> some View {
+    var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 4, style: .continuous)
-                .fill(tint)
-                .frame(width: width, height: height)
-            RoundedRectangle(cornerRadius: 1, style: .continuous)
-                .fill(Color.white.opacity(0.14))
-                .frame(width: width - 4, height: 2)
-                .offset(y: -2)
+            ForEach(0..<count, id: \.self) { index in
+                PineTree(
+                    scale: 0.74 + CGFloat(index) * 0.06,
+                    primary: index.isMultiple(of: 2) ? theme.foliagePrimary : theme.foliageSecondary,
+                    secondary: theme.foliagePrimary.opacity(0.92),
+                    trunk: theme.woodTint
+                )
+                .rotationEffect(.degrees((Double(index.isMultiple(of: 2) ? 1 : -1) * windShift) * 0.55))
+                .offset(
+                    x: CGFloat(index * 14) - 28,
+                    y: CGFloat((index % 2) * 8)
+                )
+            }
         }
-        .shadow(color: .black.opacity(0.12), radius: 4, y: 3)
     }
 }
 
-private struct WorkingGlow: View {
+private struct PineTree: View {
+    let scale: CGFloat
+    let primary: Color
+    let secondary: Color
+    let trunk: Color
+
+    var body: some View {
+        VStack(spacing: -5 * scale) {
+            ForEach(0..<3, id: \.self) { index in
+                Diamond()
+                    .fill(index == 0 ? secondary : primary.opacity(1 - Double(index) * 0.08))
+                    .frame(width: (28 - CGFloat(index) * 4) * scale, height: (21 - CGFloat(index) * 2) * scale)
+                    .shadow(color: .black.opacity(0.14), radius: 5, y: 3)
+            }
+
+            RoundedRectangle(cornerRadius: 2, style: .continuous)
+                .fill(trunk)
+                .frame(width: 5 * scale, height: 11 * scale)
+        }
+        .overlay(alignment: .bottom) {
+            Ellipse()
+                .fill(Color.black.opacity(0.14))
+                .frame(width: 24 * scale, height: 7 * scale)
+                .offset(y: 10 * scale)
+        }
+    }
+}
+
+private enum TentScale {
+    case base
+    case large
+    case small
+}
+
+private struct ExpeditionTent: View {
+    let style: TentScale
     let theme: WorldTheme
+
+    private var width: CGFloat {
+        switch style {
+        case .base: return 72
+        case .large: return 80
+        case .small: return 50
+        }
+    }
+
+    private var height: CGFloat {
+        switch style {
+        case .base: return 42
+        case .large: return 48
+        case .small: return 30
+        }
+    }
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Ellipse()
+                .fill(Color.black.opacity(0.18))
+                .frame(width: width * 0.92, height: 11)
+                .offset(y: 15)
+
+            ZStack {
+                TentShape()
+                    .fill(
+                        LinearGradient(
+                            colors: [theme.canvasPrimary, theme.canvasSecondary],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .overlay(
+                        TentShape()
+                            .stroke(Color.white.opacity(0.14), lineWidth: 1)
+                    )
+                    .shadow(color: .black.opacity(0.18), radius: 8, y: 6)
+
+                TentFacet()
+                    .fill(Color.white.opacity(0.10))
+                    .frame(width: width * 0.42, height: height * 0.60)
+                    .offset(x: -width * 0.12, y: -height * 0.10)
+
+                TentFrame()
+                    .stroke(theme.woodTint.opacity(0.55), lineWidth: 1.6)
+
+                RoundedRectangle(cornerRadius: 3, style: .continuous)
+                    .fill(Color.black.opacity(0.16))
+                    .frame(width: width * 0.15, height: height * 0.28)
+                    .offset(y: height * 0.11)
+            }
+            .frame(width: width, height: height)
+        }
+    }
+}
+
+private struct WoodStack: View {
+    let theme: WorldTheme
+
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            Ellipse()
+                .fill(Color.black.opacity(0.14))
+                .frame(width: 36, height: 9)
+                .offset(y: 8)
+
+            ForEach(0..<4, id: \.self) { index in
+                LogBar(theme: theme, width: index.isMultiple(of: 2) ? 22 : 18)
+                    .offset(x: CGFloat(index * 6), y: CGFloat(-(index % 2) * 4))
+            }
+        }
+    }
+}
+
+private struct LogBar: View {
+    let theme: WorldTheme
+    let width: CGFloat
+
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 5, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            theme.canvasPrimary.opacity(0.80),
+                            theme.woodTint,
+                            theme.woodTint.opacity(0.78)
+                        ],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .frame(width: width, height: 8)
+
+            Circle()
+                .fill(theme.canvasPrimary.opacity(0.80))
+                .frame(width: 6, height: 6)
+                .offset(x: width / 2 - 5)
+        }
+    }
+}
+
+private struct FirePit: View {
+    let isWorking: Bool
+    let theme: WorldTheme
+    let firePulse: Double
+
+    var body: some View {
+        ZStack {
+            Ellipse()
+                .fill(Color.black.opacity(0.18))
+                .frame(width: 28, height: 9)
+                .offset(y: 13)
+
+            Circle()
+                .fill(theme.accent.opacity(isWorking ? 0.18 : 0.08))
+                .frame(width: 24, height: 24)
+                .blur(radius: isWorking ? 4 : 1)
+                .scaleEffect(isWorking ? firePulse : 1)
+
+            RoundedRectangle(cornerRadius: 2, style: .continuous)
+                .fill(theme.woodTint)
+                .frame(width: 14, height: 3)
+                .rotationEffect(.degrees(24))
+
+            RoundedRectangle(cornerRadius: 2, style: .continuous)
+                .fill(theme.woodTint)
+                .frame(width: 14, height: 3)
+                .rotationEffect(.degrees(-24))
+
+            Diamond()
+                .fill(isWorking ? theme.accent : AppTheme.ember)
+                .frame(width: 14, height: 18)
+                .scaleEffect(x: isWorking ? (0.96 + (firePulse - 0.9)) : 1, y: isWorking ? firePulse : 1, anchor: .bottom)
+
+            Diamond()
+                .fill(Color(red: 1.0, green: 0.89, blue: 0.61))
+                .frame(width: 7, height: 10)
+                .scaleEffect(x: isWorking ? (0.98 + (firePulse - 0.9)) : 1, y: isWorking ? firePulse : 1, anchor: .bottom)
+        }
+    }
+}
+
+private struct WellNode: View {
+    let theme: WorldTheme
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Ellipse()
+                .fill(Color.black.opacity(0.16))
+                .frame(width: 26, height: 9)
+                .offset(y: 12)
+
+            VStack(spacing: 0) {
+                HStack(spacing: 10) {
+                    RoundedRectangle(cornerRadius: 2, style: .continuous)
+                        .fill(theme.woodTint)
+                        .frame(width: 4, height: 20)
+                    RoundedRectangle(cornerRadius: 2, style: .continuous)
+                        .fill(theme.woodTint)
+                        .frame(width: 4, height: 20)
+                }
+
+                Triangle()
+                    .fill(theme.canvasSecondary)
+                    .frame(width: 24, height: 12)
+                    .offset(y: -6)
+
+                RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    .fill(theme.stoneTint)
+                    .frame(width: 22, height: 12)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6, style: .continuous)
+                            .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                    )
+            }
+        }
+    }
+}
+
+private struct StumpNode: View {
+    let theme: WorldTheme
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Ellipse()
+                .fill(Color.black.opacity(0.14))
+                .frame(width: 22, height: 7)
+                .offset(y: 10)
+
+            RoundedRectangle(cornerRadius: 5, style: .continuous)
+                .fill(theme.woodTint)
+                .frame(width: 14, height: 14)
+
+            Circle()
+                .stroke(theme.canvasPrimary.opacity(0.88), lineWidth: 1.2)
+                .frame(width: 9, height: 9)
+                .offset(y: -4)
+        }
+    }
+}
+
+private struct WorkGlow: View {
+    let theme: WorldTheme
+    let glowPulse: Double
 
     var body: some View {
         HStack(spacing: 5) {
             ForEach(0..<3, id: \.self) { index in
                 Circle()
-                    .fill(theme.accent.opacity(0.82 - Double(index) * 0.2))
-                    .frame(width: 5, height: 5)
-                    .scaleEffect(index == 1 ? 1.2 : 1)
+                    .fill(theme.accent.opacity(0.82 - Double(index) * 0.16))
+                    .frame(width: index == 1 ? 6 : 5, height: index == 1 ? 6 : 5)
+                    .scaleEffect(index == 1 ? glowPulse : (0.94 + (glowPulse - 0.9) * 0.6))
+            }
+        }
+        .shadow(color: theme.accent.opacity(0.20), radius: 6)
+    }
+}
+
+private struct ToolRack: View {
+    let theme: WorldTheme
+    let showsPickaxe: Bool
+    let showsAxe: Bool
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Ellipse()
+                .fill(Color.black.opacity(0.14))
+                .frame(width: 32, height: 8)
+                .offset(y: 8)
+
+            RoundedRectangle(cornerRadius: 2, style: .continuous)
+                .fill(theme.woodTint)
+                .frame(width: 26, height: 3)
+
+            if showsPickaxe {
+                ToolHandle(theme: theme, angle: -24, headSymbol: .pickaxe)
+                    .offset(x: -6, y: -6)
+            }
+
+            if showsAxe {
+                ToolHandle(theme: theme, angle: 18, headSymbol: .axe)
+                    .offset(x: 7, y: -6)
             }
         }
     }
 }
 
-private struct HillShape: Shape {
-    let curveHeight: CGFloat
-    let peakOffset: CGFloat
+private struct ToolHandle: View {
+    enum HeadSymbol {
+        case pickaxe
+        case axe
+    }
+
+    let theme: WorldTheme
+    let angle: Double
+    let headSymbol: HeadSymbol
+
+    var body: some View {
+        ZStack(alignment: .top) {
+            RoundedRectangle(cornerRadius: 2, style: .continuous)
+                .fill(theme.woodTint)
+                .frame(width: 3, height: 20)
+
+            switch headSymbol {
+            case .pickaxe:
+                RoundedRectangle(cornerRadius: 2, style: .continuous)
+                    .fill(theme.stoneTint)
+                    .frame(width: 12, height: 3)
+                    .offset(y: 2)
+            case .axe:
+                RoundedRectangle(cornerRadius: 2, style: .continuous)
+                    .fill(theme.stoneTint)
+                    .frame(width: 8, height: 4)
+                    .offset(x: 3, y: 2)
+            }
+        }
+        .rotationEffect(.degrees(angle), anchor: .bottom)
+    }
+}
+
+private struct StoneCache: View {
+    let theme: WorldTheme
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Ellipse()
+                .fill(Color.black.opacity(0.12))
+                .frame(width: 26, height: 8)
+                .offset(y: 8)
+
+            HStack(spacing: 2) {
+                ForEach(0..<3, id: \.self) { index in
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .fill(index == 1 ? theme.stoneTint.opacity(0.92) : theme.stoneTint.opacity(0.74))
+                        .frame(width: 8, height: 8 + CGFloat(index % 2) * 3)
+                }
+            }
+        }
+    }
+}
+
+private struct RidgeShape: Shape {
+    let leftHeight: CGFloat
+    let centerHeight: CGFloat
+    let rightHeight: CGFloat
 
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY - rect.height * 0.24))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.height * leftHeight))
         path.addQuadCurve(
-            to: CGPoint(x: rect.midX, y: rect.maxY - rect.height * curveHeight),
-            control: CGPoint(x: rect.width * 0.24, y: rect.maxY - rect.height * (curveHeight + 0.18 + peakOffset))
+            to: CGPoint(x: rect.midX, y: rect.height * centerHeight),
+            control: CGPoint(x: rect.width * 0.28, y: rect.height * 0.06)
         )
         path.addQuadCurve(
-            to: CGPoint(x: rect.maxX, y: rect.maxY - rect.height * 0.22),
-            control: CGPoint(x: rect.width * 0.76, y: rect.maxY - rect.height * (curveHeight - 0.03 - peakOffset))
+            to: CGPoint(x: rect.maxX, y: rect.height * rightHeight),
+            control: CGPoint(x: rect.width * 0.76, y: rect.height * 0.14)
         )
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.closeSubpath()
@@ -413,19 +756,68 @@ private struct HillShape: Shape {
     }
 }
 
-private struct CampPath: Shape {
+private struct PathRibbon: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: rect.midX - 22, y: rect.minY))
+        path.move(to: CGPoint(x: rect.width * 0.28, y: rect.minY))
         path.addQuadCurve(
-            to: CGPoint(x: rect.midX + 34, y: rect.maxY),
-            control: CGPoint(x: rect.midX + 20, y: rect.midY)
+            to: CGPoint(x: rect.maxX, y: rect.height * 0.76),
+            control: CGPoint(x: rect.width * 0.74, y: rect.height * 0.30)
         )
-        path.addLine(to: CGPoint(x: rect.midX + 12, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.width * 0.84, y: rect.maxY))
         path.addQuadCurve(
-            to: CGPoint(x: rect.midX - 8, y: rect.minY + 8),
-            control: CGPoint(x: rect.midX - 12, y: rect.midY)
+            to: CGPoint(x: rect.minX, y: rect.height * 0.24),
+            control: CGPoint(x: rect.width * 0.18, y: rect.height * 0.68)
         )
+        path.closeSubpath()
+        return path
+    }
+}
+
+private struct TentShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX, y: rect.maxY * 0.58))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY * 0.44))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.10, y: rect.maxY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+private struct TentFacet: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.18, y: rect.maxY * 0.62))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + rect.height * 0.04))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY * 0.96))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 0.14, y: rect.maxY))
+        path.closeSubpath()
+        return path
+    }
+}
+
+private struct TentFrame: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.10, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY * 0.44))
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY * 0.96))
+        return path
+    }
+}
+
+private struct Diamond: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.midY))
         path.closeSubpath()
         return path
     }

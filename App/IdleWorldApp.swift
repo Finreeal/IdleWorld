@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 @main
 struct IdleWorldApp: App {
@@ -6,6 +7,7 @@ struct IdleWorldApp: App {
     @StateObject private var gameStore = GameStore()
     @StateObject private var focusManager = FocusSessionManager()
     @StateObject private var healthBonusService = HealthBonusService()
+    @StateObject private var screenTimeService = ScreenTimeService()
 
     var body: some Scene {
         WindowGroup {
@@ -13,10 +15,18 @@ struct IdleWorldApp: App {
                 .environmentObject(gameStore)
                 .environmentObject(focusManager)
                 .environmentObject(healthBonusService)
+                .environmentObject(screenTimeService)
                 .task {
+                    gameStore.load()
                     focusManager.configure(store: gameStore)
                     healthBonusService.configure(store: gameStore)
-                    gameStore.load()
+                    screenTimeService.configure()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.protectedDataWillBecomeUnavailableNotification)) { _ in
+                    focusManager.deviceDidLock()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.protectedDataDidBecomeAvailableNotification)) { _ in
+                    focusManager.deviceDidUnlock()
                 }
                 .onChange(of: scenePhase) { _, newPhase in
                     handleScenePhaseChange(newPhase)
@@ -31,7 +41,7 @@ struct IdleWorldApp: App {
         case .background:
             focusManager.appDidEnterBackground()
         case .inactive:
-            break
+            focusManager.reconcileIfNeeded()
         @unknown default:
             break
         }

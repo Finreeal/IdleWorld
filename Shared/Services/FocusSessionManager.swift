@@ -21,12 +21,32 @@ final class FocusSessionManager: ObservableObject {
             isSessionRunning = true
             return
         }
+    }
+
+    func appDidBecomeActive(date: Date = .now) {
+        reconcileIfNeeded(now: date)
+
+        guard activeSession == nil else {
+            isSessionRunning = true
+            return
+        }
+
+        isSessionRunning = false
+        store?.processReturn(at: date)
+    }
+
+    func deviceDidLock(date: Date = .now) {
+        reconcileIfNeeded(now: date)
+        guard activeSession == nil else {
+            isSessionRunning = true
+            return
+        }
 
         isSessionRunning = true
         store?.markBackground(date: date)
     }
 
-    func appDidBecomeActive(date: Date = .now) {
+    func deviceDidUnlock(date: Date = .now) {
         reconcileIfNeeded(now: date)
 
         guard activeSession == nil else {
@@ -67,7 +87,7 @@ final class FocusSessionManager: ObservableObject {
         finalize(session: session, at: now, endedEarly: true)
     }
 
-    private func reconcileIfNeeded(now: Date = .now) {
+    func reconcileIfNeeded(now: Date = .now) {
         guard let session = activeSession else { return }
         guard now >= session.endDate else { return }
         finalize(session: session, at: session.endDate, endedEarly: false)
@@ -122,7 +142,7 @@ final class FocusSessionManager: ObservableObject {
         )
 
         do {
-            _ = try Activity.request(attributes: attributes, content: .init(state: state, staleDate: session.endDate))
+            _ = try Activity.request(attributes: attributes, content: .init(state: state, staleDate: nil))
         } catch {
             // Ignore Live Activity failures; focus mode still works without it.
         }
@@ -140,7 +160,7 @@ final class FocusSessionManager: ObservableObject {
         )
 
         for activity in Activity<DeepFocusActivityAttributes>.activities where activity.attributes.sessionID == session.id.uuidString {
-            await activity.end(.init(state: state, staleDate: finalDate), dismissalPolicy: .immediate)
+            await activity.end(.init(state: state, staleDate: nil), dismissalPolicy: .immediate)
         }
     }
 }

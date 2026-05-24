@@ -35,7 +35,7 @@ final class GameStore: ObservableObject {
 
     var lastSessionSummary: String {
         guard let last = sessions.first else {
-            return "Zatím žádná focus session. Odlož telefon a vrať se později."
+            return "Zatím žádný focus blok. Odlož telefon a vrať se později."
         }
 
         let minutes = Int(last.duration / 60)
@@ -56,7 +56,7 @@ final class GameStore: ObservableObject {
     }
 
     var deepFocusSummary: String {
-        "\(state.deepFocusSessionsCompleted) session • maximum \(state.bestFocusMinutes) min"
+        "\(state.deepFocusSessionsCompleted) bloků • maximum \(state.bestFocusMinutes) min"
     }
 
     var activeTheme: WorldTheme {
@@ -84,6 +84,10 @@ final class GameStore: ObservableObject {
         return isCloudSyncEnabled
             ? "Pokrok se ukládá lokálně a zároveň do iCloudu."
             : "Pokrok se zatím ukládá jen lokálně v tomto zařízení."
+    }
+
+    var passiveGenerationStatusText: String {
+        "Pasivní sběr se spustí, když iPhone zamkneš. Pouhé přepnutí do jiné aplikace se nepočítá."
     }
 
     func load() {
@@ -162,7 +166,7 @@ final class GameStore: ObservableObject {
             seconds: seconds,
             multiplier: 1,
             kind: .passive,
-            title: "Offline běh"
+            title: "Tábor pracoval"
         )
     }
 

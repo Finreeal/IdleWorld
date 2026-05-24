@@ -3,7 +3,7 @@ import HealthKit
 
 @MainActor
 final class HealthBonusService: ObservableObject {
-    @Published private(set) var authorizationStatus: String = "Not connected"
+    @Published private(set) var authorizationStatus: String = "Nepřipojeno"
     @Published private(set) var todaySteps: Int = 0
     @Published private(set) var currentMultiplier: Double = 1
 
@@ -12,6 +12,7 @@ final class HealthBonusService: ObservableObject {
 
     func configure(store: GameStore) {
         self.store = store
+        refreshAuthorizationStatus()
     }
 
     var isAvailable: Bool {
@@ -21,13 +22,15 @@ final class HealthBonusService: ObservableObject {
     func requestAccess() {
         guard isAvailable,
               let steps = HKObjectType.quantityType(forIdentifier: .stepCount) else {
-            authorizationStatus = "Unavailable"
+            authorizationStatus = "Aplikace Zdraví není na tomto zařízení k dispozici"
             return
         }
 
+        authorizationStatus = "Čeká na potvrzení v aplikaci Zdraví"
+
         healthStore.requestAuthorization(toShare: [], read: [steps]) { [weak self] success, _ in
             Task { @MainActor in
-                self?.authorizationStatus = success ? "Connected" : "Denied"
+                self?.refreshAuthorizationStatus()
                 if success {
                     self?.refreshTodaySteps()
                 }
@@ -37,6 +40,17 @@ final class HealthBonusService: ObservableObject {
 
     func refreshTodaySteps() {
         guard let stepsType = HKQuantityType.quantityType(forIdentifier: .stepCount) else { return }
+        guard isAvailable else {
+            authorizationStatus = "Aplikace Zdraví není na tomto zařízení k dispozici"
+            return
+        }
+
+        let status = healthStore.authorizationStatus(for: stepsType)
+        guard status != .notDetermined else {
+            authorizationStatus = "Nejdřív povol přístup ke krokům"
+            return
+        }
+
         let start = Calendar.current.startOfDay(for: .now)
         let predicate = HKQuery.predicateForSamples(withStart: start, end: .now)
         let query = HKStatisticsQuery(quantityType: stepsType, quantitySamplePredicate: predicate, options: .cumulativeSum) { [weak self] _, result, _ in
@@ -49,6 +63,26 @@ final class HealthBonusService: ObservableObject {
         }
 
         healthStore.execute(query)
+    }
+
+    func refreshAuthorizationStatus() {
+        guard isAvailable,
+              let stepsType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+            authorizationStatus = "Aplikace Zdraví není na tomto zařízení k dispozici"
+            return
+        }
+
+        switch healthStore.authorizationStatus(for: stepsType) {
+        case .sharingAuthorized:
+            authorizationStatus = "Připojeno"
+            refreshTodaySteps()
+        case .sharingDenied:
+            authorizationStatus = "Přístup ke krokům je zamítnutý"
+        case .notDetermined:
+            authorizationStatus = "Ještě není propojeno"
+        @unknown default:
+            authorizationStatus = "Stav oprávnění se nepodařilo načíst"
+        }
     }
 
     private static func multiplier(for steps: Int) -> Double {

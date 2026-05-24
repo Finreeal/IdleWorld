@@ -67,11 +67,32 @@ This project uses:
 
 - an app target
 - a widget extension
+- a Device Activity monitor extension scaffold
 - App Group entitlements
 - Health permission text
 - Live Activities support
 
 Because of that, simulator or no-sign builds can pass while real-device installation still fails until signing is fully configured.
+
+## Screen Time / Family Controls checklist
+
+The repository now contains a prepared Screen Time scaffold, but real testing on iPhone still requires Apple-side setup:
+
+1. In Xcode, add the `Family Controls` capability to:
+- `IdleWorld`
+- `IdleWorldScreenTimeMonitorExtension`
+
+2. Keep the same App Group on:
+- `IdleWorld`
+- `IdleWorldWidgetExtension`
+- `IdleWorldScreenTimeMonitorExtension`
+
+3. Use a unique bundle ID for the new monitor extension too, for example:
+- `com.yourname.idleworld.monitor`
+
+4. Apple requires approval for the Family Controls entitlement before full App Store or device behavior can be trusted.
+
+5. Without that capability, the app still opens, but the `Screen Time experiment` section in Studio will only behave as a scaffold and authorization or monitoring can fail with system errors.
 
 ## Repository layout
 
@@ -80,3 +101,9 @@ Because of that, simulator or no-sign builds can pass while real-device installa
 - `Shared/`
 - `WidgetExtension/`
 - `scripts/generate_project.rb`
+
+## Looking for visual help
+
+I am looking for help with the visual side and animations.
+
+The current SwiftUI output from the generator still feels too flat. If you are comfortable with SwiftUI `Canvas`, `TimelineView`, particle effects, or integrating Lottie animations, your Pull Request is very welcome.
