@@ -1,0 +1,939 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		074AC75FBEFA3C4C4D7A65C5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E1E771409A0CE04CEAA34 /* OnboardingView.swift */; };
+		0A6EE12F6C7574DDC140FC80 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C30D80BDBFC084FC559A10F /* RootView.swift */; };
+		1147394933B894E2747F5B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 038F87DA0F3E74D9B7DCBB15 /* Assets.xcassets */; };
+		13F9EE943842AF482AD142B7 /* PostcardRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1985F370890067DA37B0D2A3 /* PostcardRenderer.swift */; };
+		1555D62CFF07F7E5622C8222 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE7DD3A911DA7050EB2230 /* AppTheme.swift */; };
+		1C60909DA920F6D87DC008B6 /* IdleWorldWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4C68A71AEBFDEBCB528F43E1 /* IdleWorldWidgetExtension.appex */; };
+		1D88A46FD166AED43288ABF7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FD49829CCA393F5E3152F2 /* WidgetKit.framework */; };
+		1E61B2FD2FE1065F32D77666 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FD49829CCA393F5E3152F2 /* WidgetKit.framework */; };
+		2204517ADA5C4C5A591C7F3E /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FCD005293779ED33EC0DA2 /* CampArtwork.swift */; };
+		22544F7EB4C60ACCBBED11DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C73E85A7C520CBEE71AA6E6 /* Foundation.framework */; };
+		23F00F55510B112A0F92FEC5 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF80F00AC2AB78F7B049EC7 /* AppConfig.swift */; };
+		24E09D269C22D0207C24C73E /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2FC5DEE756AE8D4EC1C785 /* WorldTheme.swift */; };
+		256EACAFEDB0AC96E318932A /* FamilyControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A1DA42FA9695FE0B68D7A6 /* FamilyControls.framework */; };
+		27CC0D87FDB56406E906A0B0 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5C063A5F7774C742F29EE7 /* ActivityKit.framework */; };
+		2A2684F4E187BE13A813BA2A /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E44115F9736B58666DF8C /* GameState.swift */; };
+		33AC795C7D88DD4E31C02A50 /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6797570BE53517CD27A0E08E /* DeepFocusActivityAttributes.swift */; };
+		33C1A5299541A3D5D1FBFB30 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5C063A5F7774C742F29EE7 /* ActivityKit.framework */; };
+		363D17CBC3157B4DEEA69037 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA1414E35C03BC16E89A4E /* GameStore.swift */; };
+		38C37E292D987E3196554ED2 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E44115F9736B58666DF8C /* GameState.swift */; };
+		39375B1D946554E28D791875 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 01D72F076885482094F3B731 /* Lottie */; };
+		3A4B4EF7C8766E0D5387DB26 /* IdleWorldScreenTimeMonitorExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 33B1598D86699D20E750F3EF /* IdleWorldScreenTimeMonitorExtension.appex */; };
+		3B8C4E6A393805CA0556C7AF /* ScreenTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFB7BCB225CE359E26F9286 /* ScreenTimeService.swift */; };
+		3D79D3C5F40085078C3C84AE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F8FE79C1F6484A2A19757B /* SwiftUI.framework */; };
+		45A1418D8031C059B8AF445C /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FCD005293779ED33EC0DA2 /* CampArtwork.swift */; };
+		4A53CF663F462B43CAAB8F3B /* ManagedSettings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E182615B086C48DE2F6294 /* ManagedSettings.framework */; };
+		51B4DCD472134C3DB0967510 /* HealthBonusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3252B146B56036B191F859A9 /* HealthBonusService.swift */; };
+		55FB3DF71FC30B4075F98C09 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036E44115F9736B58666DF8C /* GameState.swift */; };
+		567EF6750F8319CBA328F0E3 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AB99025B2147EA91EE1AAB /* DeviceActivity.framework */; };
+		597C5949E0C730874990B60B /* CampLottiePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBACA2C697656FC66CE06E0 /* CampLottiePanel.swift */; };
+		5C991F5B0D89BBB73304C8D5 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF80F00AC2AB78F7B049EC7 /* AppConfig.swift */; };
+		66D9FE1854816712A130E24C /* IdleWorldApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D389DF30F471487F962B7D /* IdleWorldApp.swift */; };
+		6F55C895177EE7FBC9067E9E /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74891348492D114F918AFEC /* Haptics.swift */; };
+		726BFEF7094E7FC2487A8DAD /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1ABE394430D95CFD126606 /* HealthKit.framework */; };
+		73148373C64B1EE2C0DAC724 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D149DE3F1ABF67C757F128 /* HomeView.swift */; };
+		78B2455CA4DBEF50D49D5F42 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE7DD3A911DA7050EB2230 /* AppTheme.swift */; };
+		79CB2EF37C9E8B9F6D9213A7 /* sun.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F230AD101FBB774843C7815 /* sun.json */; };
+		7B5DA3F44849991D019BBAF0 /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99DFBA13B8061B90A48A33 /* FocusSessionPlan.swift */; };
+		7D0CE5B1F9589518AA51ED14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C73E85A7C520CBEE71AA6E6 /* Foundation.framework */; };
+		82A5E4A4BB3B7975AC85BEA3 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FDF55986B7948D34E9B42 /* SessionLog.swift */; };
+		84C0980CAE6CAD9B5F1D9C6F /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240314D54C83F517B1383DE /* FocusSessionManager.swift */; };
+		85C1501CF49EA15536337523 /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6797570BE53517CD27A0E08E /* DeepFocusActivityAttributes.swift */; };
+		880650CAFB91234177647E0F /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAD491529732AF333A939D1 /* LottieView.swift */; };
+		95B09B4708142D9A68D8CC3D /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D671718156C3310EF4E85 /* Upgrade.swift */; };
+		9A1C151F9BBA3A2761BBE1DD /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240314D54C83F517B1383DE /* FocusSessionManager.swift */; };
+		9C9AFEC93AB187EF6C59011B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F8FE79C1F6484A2A19757B /* SwiftUI.framework */; };
+		A32BEAB467F9A764DA65C31F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C73E85A7C520CBEE71AA6E6 /* Foundation.framework */; };
+		A69B886A37AFFADA22DE2A8A /* IdleWorldWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C9B8FF22DF3716179843F /* IdleWorldWidgetBundle.swift */; };
+		AE8912E0A2EB9FB49F6DE7E5 /* WidgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D65B913BE1A1025659BAC49 /* WidgetStore.swift */; };
+		B03A0A200781E0C16AB00463 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7AB99025B2147EA91EE1AAB /* DeviceActivity.framework */; };
+		BA68424C4696D53DABB37E80 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53974B5F94205C8D452E4D0 /* ShopView.swift */; };
+		BAFB733A178E4F158CDA64B1 /* IdleWorldWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3EDC773384571ED2A8D44E /* IdleWorldWidget.swift */; };
+		C583E12CC2032ED8EE7D651E /* FamilyControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A1DA42FA9695FE0B68D7A6 /* FamilyControls.framework */; };
+		C61510C0E04CA7F9E45F1390 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA1414E35C03BC16E89A4E /* GameStore.swift */; };
+		C808936BDEC4FB590AEC28A1 /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99DFBA13B8061B90A48A33 /* FocusSessionPlan.swift */; };
+		C8A8CDD3DAE385C4BFE5C2E5 /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA1414E35C03BC16E89A4E /* GameStore.swift */; };
+		CA4EC6CDD0A2828C8DA84EE8 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FDF55986B7948D34E9B42 /* SessionLog.swift */; };
+		CA59DFBE05A8DCF72417CBC5 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D671718156C3310EF4E85 /* Upgrade.swift */; };
+		CD0C246C02414F1C5B5AF231 /* campfire.json in Resources */ = {isa = PBXBuildFile; fileRef = 8070930140029F086D18F05D /* campfire.json */; };
+		D1BC650FDA5045BC646D4CCD /* FocusSessionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB99DFBA13B8061B90A48A33 /* FocusSessionPlan.swift */; };
+		D45A6A064B46C914E1DE842B /* ScreenTimeMonitorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99CCF58642EA300B734ECC8 /* ScreenTimeMonitorExtension.swift */; };
+		D80D98EF10B260EE6775F274 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF80F00AC2AB78F7B049EC7 /* AppConfig.swift */; };
+		DF32D84990F74D10E9EE9594 /* FocusSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C240314D54C83F517B1383DE /* FocusSessionManager.swift */; };
+		E4F99B8AF4AABFDAEBC2B062 /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2FC5DEE756AE8D4EC1C785 /* WorldTheme.swift */; };
+		E5BFC657CFC7AECA05380C7D /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74891348492D114F918AFEC /* Haptics.swift */; };
+		E6FD937270D6FE2FF3A60017 /* DeepFocusLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4991F11104A92CEB8CCF /* DeepFocusLiveActivity.swift */; };
+		E79522B7BB2A7AC707242C63 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153FDF55986B7948D34E9B42 /* SessionLog.swift */; };
+		E9B7FB6F2AC55197F1DF7C0C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE7DD3A911DA7050EB2230 /* AppTheme.swift */; };
+		EB11DE0A6F1AB6781FB48267 /* DeepFocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6797570BE53517CD27A0E08E /* DeepFocusActivityAttributes.swift */; };
+		F6380C3B2CB98B18B9F39028 /* WorldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2FC5DEE756AE8D4EC1C785 /* WorldTheme.swift */; };
+		F7569669CC7ADB7A7A1CC285 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9D671718156C3310EF4E85 /* Upgrade.swift */; };
+		FA2B61015CBE1EDCFE5EA21D /* CampArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FCD005293779ED33EC0DA2 /* CampArtwork.swift */; };
+		FF765AC02BAA2241F951227E /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74891348492D114F918AFEC /* Haptics.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8C0F30CD08488FF3B8C0DEC7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1C60909DA920F6D87DC008B6 /* IdleWorldWidgetExtension.appex in Embed App Extensions */,
+				3A4B4EF7C8766E0D5387DB26 /* IdleWorldScreenTimeMonitorExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		036E44115F9736B58666DF8C /* GameState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		038F87DA0F3E74D9B7DCBB15 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0CF80F00AC2AB78F7B049EC7 /* AppConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		14D389DF30F471487F962B7D /* IdleWorldApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldApp.swift; sourceTree = "<group>"; };
+		153FDF55986B7948D34E9B42 /* SessionLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SessionLog.swift; sourceTree = "<group>"; };
+		16A1DA42FA9695FE0B68D7A6 /* FamilyControls.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FamilyControls.framework; path = System/Library/Frameworks/FamilyControls.framework; sourceTree = "<group>"; };
+		1985F370890067DA37B0D2A3 /* PostcardRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PostcardRenderer.swift; sourceTree = "<group>"; };
+		1FAD491529732AF333A939D1 /* LottieView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		2C73E85A7C520CBEE71AA6E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3252B146B56036B191F859A9 /* HealthBonusService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HealthBonusService.swift; sourceTree = "<group>"; };
+		33B1598D86699D20E750F3EF /* IdleWorldScreenTimeMonitorExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IdleWorldScreenTimeMonitorExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3EDC773384571ED2A8D44E /* IdleWorldWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldWidget.swift; sourceTree = "<group>"; };
+		4C68A71AEBFDEBCB528F43E1 /* IdleWorldWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IdleWorldWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CFB7BCB225CE359E26F9286 /* ScreenTimeService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScreenTimeService.swift; sourceTree = "<group>"; };
+		543E1E771409A0CE04CEAA34 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		5EBACA2C697656FC66CE06E0 /* CampLottiePanel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CampLottiePanel.swift; sourceTree = "<group>"; };
+		6797570BE53517CD27A0E08E /* DeepFocusActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepFocusActivityAttributes.swift; sourceTree = "<group>"; };
+		6CAC63A1852C2EBC536D4B63 /* IdleWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdleWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F230AD101FBB774843C7815 /* sun.json */ = {isa = PBXFileReference; includeInIndex = 1; path = sun.json; sourceTree = "<group>"; };
+		7C30D80BDBFC084FC559A10F /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		8070930140029F086D18F05D /* campfire.json */ = {isa = PBXFileReference; includeInIndex = 1; path = campfire.json; sourceTree = "<group>"; };
+		9A1ABE394430D95CFD126606 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = "<group>"; };
+		9D65B913BE1A1025659BAC49 /* WidgetStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetStore.swift; sourceTree = "<group>"; };
+		A7AB99025B2147EA91EE1AAB /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = "<group>"; };
+		A8E182615B086C48DE2F6294 /* ManagedSettings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ManagedSettings.framework; path = System/Library/Frameworks/ManagedSettings.framework; sourceTree = "<group>"; };
+		AE2FC5DEE756AE8D4EC1C785 /* WorldTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WorldTheme.swift; sourceTree = "<group>"; };
+		B7FD49829CCA393F5E3152F2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = "<group>"; };
+		B8FCD005293779ED33EC0DA2 /* CampArtwork.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CampArtwork.swift; sourceTree = "<group>"; };
+		BB99DFBA13B8061B90A48A33 /* FocusSessionPlan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FocusSessionPlan.swift; sourceTree = "<group>"; };
+		BC5C063A5F7774C742F29EE7 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = "<group>"; };
+		C18C9B8FF22DF3716179843F /* IdleWorldWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IdleWorldWidgetBundle.swift; sourceTree = "<group>"; };
+		C240314D54C83F517B1383DE /* FocusSessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FocusSessionManager.swift; sourceTree = "<group>"; };
+		C99CCF58642EA300B734ECC8 /* ScreenTimeMonitorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ScreenTimeMonitorExtension.swift; sourceTree = "<group>"; };
+		C9EE7DD3A911DA7050EB2230 /* AppTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		CCCA1414E35C03BC16E89A4E /* GameStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
+		D53974B5F94205C8D452E4D0 /* ShopView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		D74891348492D114F918AFEC /* Haptics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		E1AA4991F11104A92CEB8CCF /* DeepFocusLiveActivity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeepFocusLiveActivity.swift; sourceTree = "<group>"; };
+		E9F8FE79C1F6484A2A19757B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = "<group>"; };
+		EA9D671718156C3310EF4E85 /* Upgrade.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
+		F5D149DE3F1ABF67C757F128 /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		213A7F7F790B31BDD1B1F441 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A32BEAB467F9A764DA65C31F /* Foundation.framework in Frameworks */,
+				27CC0D87FDB56406E906A0B0 /* ActivityKit.framework in Frameworks */,
+				9C9AFEC93AB187EF6C59011B /* SwiftUI.framework in Frameworks */,
+				1E61B2FD2FE1065F32D77666 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3552FD7DE4D9B8830E37034E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22544F7EB4C60ACCBBED11DB /* Foundation.framework in Frameworks */,
+				39375B1D946554E28D791875 /* Lottie in Frameworks */,
+				33C1A5299541A3D5D1FBFB30 /* ActivityKit.framework in Frameworks */,
+				3D79D3C5F40085078C3C84AE /* SwiftUI.framework in Frameworks */,
+				1D88A46FD166AED43288ABF7 /* WidgetKit.framework in Frameworks */,
+				726BFEF7094E7FC2487A8DAD /* HealthKit.framework in Frameworks */,
+				C583E12CC2032ED8EE7D651E /* FamilyControls.framework in Frameworks */,
+				B03A0A200781E0C16AB00463 /* DeviceActivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B94CFFDBDDE2F462FECB9C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D0CE5B1F9589518AA51ED14 /* Foundation.framework in Frameworks */,
+				256EACAFEDB0AC96E318932A /* FamilyControls.framework in Frameworks */,
+				567EF6750F8319CBA328F0E3 /* DeviceActivity.framework in Frameworks */,
+				4A53CF663F462B43CAAB8F3B /* ManagedSettings.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E3A7F0051233F58F71F5A5 /* ScreenTimeMonitorExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C99CCF58642EA300B734ECC8 /* ScreenTimeMonitorExtension.swift */,
+			);
+			name = ScreenTimeMonitorExtension;
+			path = ScreenTimeMonitorExtension;
+			sourceTree = "<group>";
+		};
+		0B814B5A912273DFE26C26EF /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				70A839E1E4E0BB29199ED2E9 /* Home */,
+				7F808870A42887A289ECDC8E /* Onboarding */,
+				686766EECFFCEC6B1B696BDC /* Shop */,
+			);
+			name = Features;
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0B995034870E3A6F23C58B13 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				6797570BE53517CD27A0E08E /* DeepFocusActivityAttributes.swift */,
+			);
+			name = Activities;
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		1C4D50D4AE199FA3ACAF552C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB3A13D049C9310A6645595C /* iOS */,
+				BC5C063A5F7774C742F29EE7 /* ActivityKit.framework */,
+				E9F8FE79C1F6484A2A19757B /* SwiftUI.framework */,
+				B7FD49829CCA393F5E3152F2 /* WidgetKit.framework */,
+				9A1ABE394430D95CFD126606 /* HealthKit.framework */,
+				16A1DA42FA9695FE0B68D7A6 /* FamilyControls.framework */,
+				A7AB99025B2147EA91EE1AAB /* DeviceActivity.framework */,
+				A8E182615B086C48DE2F6294 /* ManagedSettings.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		251798E5B988F793677BB09D = {
+			isa = PBXGroup;
+			children = (
+				9B118A5B1569A9B2598BB827 /* Products */,
+				1C4D50D4AE199FA3ACAF552C /* Frameworks */,
+				E7A1856592042CB205D48B9F /* App */,
+				D8CA32B14927275F3B60ADBA /* Shared */,
+				8FC2724D0241F0D277B71AEC /* WidgetExtension */,
+				00E3A7F0051233F58F71F5A5 /* ScreenTimeMonitorExtension */,
+			);
+			sourceTree = "<group>";
+		};
+		438492BCBC27671EBA5028A4 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				0CF80F00AC2AB78F7B049EC7 /* AppConfig.swift */,
+				D74891348492D114F918AFEC /* Haptics.swift */,
+			);
+			name = Support;
+			path = Support;
+			sourceTree = "<group>";
+		};
+		450F066A238D455947F7023A /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				C9EE7DD3A911DA7050EB2230 /* AppTheme.swift */,
+			);
+			name = Theme;
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		5555B3E09B2700C4B4679CF2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B8FCD005293779ED33EC0DA2 /* CampArtwork.swift */,
+			);
+			name = UI;
+			path = UI;
+			sourceTree = "<group>";
+		};
+		686766EECFFCEC6B1B696BDC /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				D53974B5F94205C8D452E4D0 /* ShopView.swift */,
+			);
+			name = Shop;
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		70A839E1E4E0BB29199ED2E9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5EBACA2C697656FC66CE06E0 /* CampLottiePanel.swift */,
+				F5D149DE3F1ABF67C757F128 /* HomeView.swift */,
+			);
+			name = Home;
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7F808870A42887A289ECDC8E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				543E1E771409A0CE04CEAA34 /* OnboardingView.swift */,
+			);
+			name = Onboarding;
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		8C3C64D79C81270AB30F4284 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C240314D54C83F517B1383DE /* FocusSessionManager.swift */,
+				3252B146B56036B191F859A9 /* HealthBonusService.swift */,
+				1985F370890067DA37B0D2A3 /* PostcardRenderer.swift */,
+				4CFB7BCB225CE359E26F9286 /* ScreenTimeService.swift */,
+			);
+			name = Services;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8FC2724D0241F0D277B71AEC /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				E1AA4991F11104A92CEB8CCF /* DeepFocusLiveActivity.swift */,
+				3B3EDC773384571ED2A8D44E /* IdleWorldWidget.swift */,
+				C18C9B8FF22DF3716179843F /* IdleWorldWidgetBundle.swift */,
+				9D65B913BE1A1025659BAC49 /* WidgetStore.swift */,
+			);
+			name = WidgetExtension;
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		9B118A5B1569A9B2598BB827 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6CAC63A1852C2EBC536D4B63 /* IdleWorld.app */,
+				4C68A71AEBFDEBCB528F43E1 /* IdleWorldWidgetExtension.appex */,
+				33B1598D86699D20E750F3EF /* IdleWorldScreenTimeMonitorExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABC7D283F286DBEC7433944B /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				CCCA1414E35C03BC16E89A4E /* GameStore.swift */,
+			);
+			name = Storage;
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		AC9281E030460CD729C2A9B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB99DFBA13B8061B90A48A33 /* FocusSessionPlan.swift */,
+				036E44115F9736B58666DF8C /* GameState.swift */,
+				153FDF55986B7948D34E9B42 /* SessionLog.swift */,
+				EA9D671718156C3310EF4E85 /* Upgrade.swift */,
+				AE2FC5DEE756AE8D4EC1C785 /* WorldTheme.swift */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C445DF69CB06BA2712E41C3E /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				8070930140029F086D18F05D /* campfire.json */,
+				6F230AD101FBB774843C7815 /* sun.json */,
+			);
+			name = Lottie;
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		D233C45F7D5BFD2556D97456 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C445DF69CB06BA2712E41C3E /* Lottie */,
+			);
+			name = Resources;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D8CA32B14927275F3B60ADBA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0B995034870E3A6F23C58B13 /* Activities */,
+				AC9281E030460CD729C2A9B5 /* Models */,
+				8C3C64D79C81270AB30F4284 /* Services */,
+				ABC7D283F286DBEC7433944B /* Storage */,
+				438492BCBC27671EBA5028A4 /* Support */,
+				450F066A238D455947F7023A /* Theme */,
+				5555B3E09B2700C4B4679CF2 /* UI */,
+			);
+			name = Shared;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		E7A1856592042CB205D48B9F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0B814B5A912273DFE26C26EF /* Features */,
+				14D389DF30F471487F962B7D /* IdleWorldApp.swift */,
+				7C30D80BDBFC084FC559A10F /* RootView.swift */,
+				E945987A3294BEBED4C0E010 /* Support */,
+				038F87DA0F3E74D9B7DCBB15 /* Assets.xcassets */,
+				D233C45F7D5BFD2556D97456 /* Resources */,
+			);
+			name = App;
+			path = App;
+			sourceTree = "<group>";
+		};
+		E945987A3294BEBED4C0E010 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				1FAD491529732AF333A939D1 /* LottieView.swift */,
+			);
+			name = Support;
+			path = Support;
+			sourceTree = "<group>";
+		};
+		FB3A13D049C9310A6645595C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2C73E85A7C520CBEE71AA6E6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F3BEE8BC4447F1AABCC91BB /* IdleWorldScreenTimeMonitorExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFAF008889002D55F284FDAF /* Build configuration list for PBXNativeTarget "IdleWorldScreenTimeMonitorExtension" */;
+			buildPhases = (
+				F0565DDDF2799706013BBA5C /* Sources */,
+				B94CFFDBDDE2F462FECB9C44 /* Frameworks */,
+				A2BAC963BECBFD8A39F8C4BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdleWorldScreenTimeMonitorExtension;
+			productName = IdleWorldScreenTimeMonitorExtension;
+			productReference = 33B1598D86699D20E750F3EF /* IdleWorldScreenTimeMonitorExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		1600863209AB52E572881715 /* IdleWorld */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1C3DE09BB73521ED1B23FDF /* Build configuration list for PBXNativeTarget "IdleWorld" */;
+			buildPhases = (
+				E5690BAE9918B58968966CDE /* Sources */,
+				3552FD7DE4D9B8830E37034E /* Frameworks */,
+				8D13D676940A2E4C0AF76825 /* Resources */,
+				8C0F30CD08488FF3B8C0DEC7 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdleWorld;
+			packageProductDependencies = (
+				01D72F076885482094F3B731 /* Lottie */,
+			);
+			productName = IdleWorld;
+			productReference = 6CAC63A1852C2EBC536D4B63 /* IdleWorld.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC83F01025F5B20176F16A74 /* IdleWorldWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46BE4D9031AF2A0FAAA86A7F /* Build configuration list for PBXNativeTarget "IdleWorldWidgetExtension" */;
+			buildPhases = (
+				800B0A4259D165A3CEEBAC4F /* Sources */,
+				213A7F7F790B31BDD1B1F441 /* Frameworks */,
+				9567328BEEE373227767E4B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IdleWorldWidgetExtension;
+			productName = IdleWorldWidgetExtension;
+			productReference = 4C68A71AEBFDEBCB528F43E1 /* IdleWorldWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DA2DBAD75F06076E92D1B468 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+			};
+			buildConfigurationList = 0519C4F5F19380FA9A7ECC5A /* Build configuration list for PBXProject "IdleWorld" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 251798E5B988F793677BB09D;
+			minimizedProjectReferenceProxies = 0;
+			packageReferences = (
+				1D4CFB998D1539B86EE2F991 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9B118A5B1569A9B2598BB827 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1600863209AB52E572881715 /* IdleWorld */,
+				AC83F01025F5B20176F16A74 /* IdleWorldWidgetExtension */,
+				0F3BEE8BC4447F1AABCC91BB /* IdleWorldScreenTimeMonitorExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D13D676940A2E4C0AF76825 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1147394933B894E2747F5B05 /* Assets.xcassets in Resources */,
+				CD0C246C02414F1C5B5AF231 /* campfire.json in Resources */,
+				79CB2EF37C9E8B9F6D9213A7 /* sun.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9567328BEEE373227767E4B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2BAC963BECBFD8A39F8C4BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		800B0A4259D165A3CEEBAC4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB11DE0A6F1AB6781FB48267 /* DeepFocusActivityAttributes.swift in Sources */,
+				7B5DA3F44849991D019BBAF0 /* FocusSessionPlan.swift in Sources */,
+				2A2684F4E187BE13A813BA2A /* GameState.swift in Sources */,
+				82A5E4A4BB3B7975AC85BEA3 /* SessionLog.swift in Sources */,
+				F7569669CC7ADB7A7A1CC285 /* Upgrade.swift in Sources */,
+				F6380C3B2CB98B18B9F39028 /* WorldTheme.swift in Sources */,
+				9A1C151F9BBA3A2761BBE1DD /* FocusSessionManager.swift in Sources */,
+				363D17CBC3157B4DEEA69037 /* GameStore.swift in Sources */,
+				D80D98EF10B260EE6775F274 /* AppConfig.swift in Sources */,
+				E5BFC657CFC7AECA05380C7D /* Haptics.swift in Sources */,
+				1555D62CFF07F7E5622C8222 /* AppTheme.swift in Sources */,
+				2204517ADA5C4C5A591C7F3E /* CampArtwork.swift in Sources */,
+				E6FD937270D6FE2FF3A60017 /* DeepFocusLiveActivity.swift in Sources */,
+				BAFB733A178E4F158CDA64B1 /* IdleWorldWidget.swift in Sources */,
+				A69B886A37AFFADA22DE2A8A /* IdleWorldWidgetBundle.swift in Sources */,
+				AE8912E0A2EB9FB49F6DE7E5 /* WidgetStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5690BAE9918B58968966CDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				597C5949E0C730874990B60B /* CampLottiePanel.swift in Sources */,
+				73148373C64B1EE2C0DAC724 /* HomeView.swift in Sources */,
+				074AC75FBEFA3C4C4D7A65C5 /* OnboardingView.swift in Sources */,
+				BA68424C4696D53DABB37E80 /* ShopView.swift in Sources */,
+				66D9FE1854816712A130E24C /* IdleWorldApp.swift in Sources */,
+				0A6EE12F6C7574DDC140FC80 /* RootView.swift in Sources */,
+				880650CAFB91234177647E0F /* LottieView.swift in Sources */,
+				85C1501CF49EA15536337523 /* DeepFocusActivityAttributes.swift in Sources */,
+				C808936BDEC4FB590AEC28A1 /* FocusSessionPlan.swift in Sources */,
+				38C37E292D987E3196554ED2 /* GameState.swift in Sources */,
+				E79522B7BB2A7AC707242C63 /* SessionLog.swift in Sources */,
+				CA59DFBE05A8DCF72417CBC5 /* Upgrade.swift in Sources */,
+				24E09D269C22D0207C24C73E /* WorldTheme.swift in Sources */,
+				DF32D84990F74D10E9EE9594 /* FocusSessionManager.swift in Sources */,
+				51B4DCD472134C3DB0967510 /* HealthBonusService.swift in Sources */,
+				13F9EE943842AF482AD142B7 /* PostcardRenderer.swift in Sources */,
+				3B8C4E6A393805CA0556C7AF /* ScreenTimeService.swift in Sources */,
+				C61510C0E04CA7F9E45F1390 /* GameStore.swift in Sources */,
+				5C991F5B0D89BBB73304C8D5 /* AppConfig.swift in Sources */,
+				6F55C895177EE7FBC9067E9E /* Haptics.swift in Sources */,
+				78B2455CA4DBEF50D49D5F42 /* AppTheme.swift in Sources */,
+				45A1418D8031C059B8AF445C /* CampArtwork.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0565DDDF2799706013BBA5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33AC795C7D88DD4E31C02A50 /* DeepFocusActivityAttributes.swift in Sources */,
+				D1BC650FDA5045BC646D4CCD /* FocusSessionPlan.swift in Sources */,
+				55FB3DF71FC30B4075F98C09 /* GameState.swift in Sources */,
+				CA4EC6CDD0A2828C8DA84EE8 /* SessionLog.swift in Sources */,
+				95B09B4708142D9A68D8CC3D /* Upgrade.swift in Sources */,
+				E4F99B8AF4AABFDAEBC2B062 /* WorldTheme.swift in Sources */,
+				84C0980CAE6CAD9B5F1D9C6F /* FocusSessionManager.swift in Sources */,
+				C8A8CDD3DAE385C4BFE5C2E5 /* GameStore.swift in Sources */,
+				23F00F55510B112A0F92FEC5 /* AppConfig.swift in Sources */,
+				FF765AC02BAA2241F951227E /* Haptics.swift in Sources */,
+				E9B7FB6F2AC55197F1DF7C0C /* AppTheme.swift in Sources */,
+				FA2B61015CBE1EDCFE5EA21D /* CampArtwork.swift in Sources */,
+				D45A6A064B46C914E1DE842B /* ScreenTimeMonitorExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		087C37E6F26CD580197374F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.idleworld.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		31C9E3B8E7CC6CDC3D8E5F4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.idleworld.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3ABEE99F50185CD763A9C827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorld.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Idle World";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Idle World používá počet tvých kroků k udělení bonusu za pohyb ve skutečném světě.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.idleworld;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		524A302C8F23991E717F503A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		61B162B32BFE7713F848D612 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldScreenTimeMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScreenTimeMonitorExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.idleworld.monitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9328C0370935A0E0B3A6496D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorldScreenTimeMonitor.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScreenTimeMonitorExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.idleworld.monitor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A8D17ECA8599758C78CCF102 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = Config/IdleWorld.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Idle World";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Idle World používá počet tvých kroků k udělení bonusu za pohyb ve skutečném světě.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.idleworld;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C4C3007EE18AB46BC1D7D8E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0519C4F5F19380FA9A7ECC5A /* Build configuration list for PBXProject "IdleWorld" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4C3007EE18AB46BC1D7D8E5 /* Debug */,
+				524A302C8F23991E717F503A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46BE4D9031AF2A0FAAA86A7F /* Build configuration list for PBXNativeTarget "IdleWorldWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				31C9E3B8E7CC6CDC3D8E5F4B /* Release */,
+				087C37E6F26CD580197374F8 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1C3DE09BB73521ED1B23FDF /* Build configuration list for PBXNativeTarget "IdleWorld" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ABEE99F50185CD763A9C827 /* Release */,
+				A8D17ECA8599758C78CCF102 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFAF008889002D55F284FDAF /* Build configuration list for PBXNativeTarget "IdleWorldScreenTimeMonitorExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9328C0370935A0E0B3A6496D /* Release */,
+				61B162B32BFE7713F848D612 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1D4CFB998D1539B86EE2F991 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01D72F076885482094F3B731 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D4CFB998D1539B86EE2F991 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DA2DBAD75F06076E92D1B468 /* Project object */;
+}
